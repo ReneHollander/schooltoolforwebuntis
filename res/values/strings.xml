@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App -->
+    <string name="app_name">SchoolTool for WebUntis</string>
+
+    <!-- Welcome Section Strings -->
+    <string name="welcome_section_title">Welcome</string>
+
+    <!-- Clock Section Strings -->
+    <string name="clock_section_title">Clock</string>
+
+    <!-- TimeTable Section Strings -->
+    <string name="timetable_section_title">TimeTable</string>
+
+    <!-- Settings Section Strings -->
+    <string name="settings_section_title">Settings</string>
+
+</resources>
