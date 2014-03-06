@@ -13,7 +13,7 @@ public class TimeTableSection extends Fragment {
 
 	public TimeTableSection() {
 		Bundle bundle = new Bundle();
-		bundle.putString("title", MainActivity.getContext().getString(R.string.timetable_section_title));
+		bundle.putString("title", MainActivity.getMainActivity().getString(R.string.timetable_section_title));
 		this.setArguments(bundle);
 	}
 

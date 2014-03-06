@@ -13,7 +13,7 @@ public class SettingsSection extends Fragment {
 
 	public SettingsSection() {
 		Bundle bundle = new Bundle();
-		bundle.putString("title", MainActivity.getContext().getString(R.string.settings_section_title));
+		bundle.putString("title", MainActivity.getMainActivity().getString(R.string.settings_section_title));
 		this.setArguments(bundle);
 	}
 

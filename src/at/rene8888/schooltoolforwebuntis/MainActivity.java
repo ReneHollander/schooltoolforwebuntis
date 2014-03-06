@@ -1,7 +1,6 @@
 package at.rene8888.schooltoolforwebuntis;
 
 import android.app.ActionBar;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -13,11 +12,11 @@ public class MainActivity extends FragmentActivity {
 
 	private ViewPager mViewPager;
 
-	private static Context CONTEXT;
+	private static MainActivity MAIN_ACTIVITY;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		CONTEXT = this;
+		MAIN_ACTIVITY = this;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		final ActionBar actionBar = getActionBar();
@@ -40,8 +39,8 @@ public class MainActivity extends FragmentActivity {
 		return true;
 	}
 
-	public static Context getContext() {
-		return CONTEXT;
+	public static MainActivity getMainActivity() {
+		return MAIN_ACTIVITY;
 	}
 
 }

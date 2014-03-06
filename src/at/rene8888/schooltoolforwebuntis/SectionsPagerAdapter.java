@@ -19,7 +19,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 	public SectionsPagerAdapter(FragmentManager fm) {
 		super(fm);
 		this.items = new SparseArray<Fragment>();
-		SharedPreferences prefs = MainActivity.getContext().getSharedPreferences("at.rene8888.schooltoolforwebuntis", Context.MODE_PRIVATE);
+		SharedPreferences prefs = MainActivity.getMainActivity().getSharedPreferences("at.rene8888.schooltoolforwebuntis", Context.MODE_PRIVATE);
 		if (prefs.getBoolean("firstStart", true)) {
 			this.items.put(this.items.size(), new WelcomeSection());
 			Editor editor = prefs.edit();

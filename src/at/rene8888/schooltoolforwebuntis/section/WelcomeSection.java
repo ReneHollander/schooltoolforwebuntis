@@ -13,7 +13,7 @@ public class WelcomeSection extends Fragment {
 
 	public WelcomeSection() {
 		Bundle bundle = new Bundle();
-		bundle.putString("title", MainActivity.getContext().getString(R.string.welcome_section_title));
+		bundle.putString("title", MainActivity.getMainActivity().getString(R.string.welcome_section_title));
 		this.setArguments(bundle);
 	}
 
