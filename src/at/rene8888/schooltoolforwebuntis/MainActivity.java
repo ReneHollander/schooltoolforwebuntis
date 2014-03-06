@@ -1,5 +1,6 @@
 package at.rene8888.schooltoolforwebuntis;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -16,17 +17,21 @@ public class MainActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
 		CONTEXT = this;
-
-		this.setContentView(R.layout.activity_main);
-
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		final ActionBar actionBar = getActionBar();
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		actionBar.setDisplayShowHomeEnabled(false);
+		actionBar.setDisplayShowTitleEnabled(false);
 		this.mSectionsPagerAdapter = new SectionsPagerAdapter(this.getSupportFragmentManager());
+		mViewPager = (ViewPager) findViewById(R.id.pager);
+		mViewPager.setAdapter(mSectionsPagerAdapter);
+		mViewPager.setOnPageChangeListener(new PageChangeListener(actionBar));
 
-		this.mViewPager = (ViewPager) findViewById(R.id.pager);
-		this.mViewPager.setAdapter(this.mSectionsPagerAdapter);
-
+		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
+			actionBar.addTab(actionBar.newTab().setText(mSectionsPagerAdapter.getPageTitle(i)).setTabListener(new TabListener(this.mViewPager)));
+		}
 	}
 
 	@Override
