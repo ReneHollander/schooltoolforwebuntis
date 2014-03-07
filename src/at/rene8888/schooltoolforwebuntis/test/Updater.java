@@ -3,7 +3,7 @@ package at.rene8888.schooltoolforwebuntis.test;
 import java.util.List;
 
 import android.widget.TextView;
-import at.rene8888.schooltoolforwebuntis.MainActivity;
+import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
 
 public class Updater extends Thread {
 

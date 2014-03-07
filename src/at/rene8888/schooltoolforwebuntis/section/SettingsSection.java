@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import at.rene8888.schooltoolforwebuntis.ApplicationClass;
-import at.rene8888.schooltoolforwebuntis.MainActivity;
 import at.rene8888.schooltoolforwebuntis.R;
+import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
 
 public class SettingsSection extends Fragment implements View.OnClickListener{
 	private ApplicationClass app;

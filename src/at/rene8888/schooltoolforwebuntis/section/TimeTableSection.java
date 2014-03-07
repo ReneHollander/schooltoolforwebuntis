@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import at.rene8888.schooltoolforwebuntis.MainActivity;
 import at.rene8888.schooltoolforwebuntis.R;
+import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
 
 public class TimeTableSection extends Fragment {
 

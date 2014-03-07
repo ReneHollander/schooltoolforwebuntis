@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 import android.util.Log;
 import at.rene8888.schooltoolforwebuntis.ApplicationClass;
-import at.rene8888.schooltoolforwebuntis.MainActivity;
+import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
 
 public class WebUntisRequests {
 

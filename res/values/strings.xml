@@ -19,5 +19,8 @@
     <string name="until_next_hour">until the next hour</string>
     <string name="until_next_break">until the next break</string>
     <string name="save">Save</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
