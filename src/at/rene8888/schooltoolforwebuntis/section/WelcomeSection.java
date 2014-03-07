@@ -11,9 +11,9 @@ import at.rene8888.schooltoolforwebuntis.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.MainActivity;
 import at.rene8888.schooltoolforwebuntis.R;
 
-public class WelcomeSection extends Fragment implements OnClickListener{
+public class WelcomeSection extends Fragment implements OnClickListener {
 	private ApplicationClass app;
-	
+
 	public WelcomeSection() {
 		Bundle bundle = new Bundle();
 		bundle.putString("title", MainActivity.getMainActivity().getString(R.string.welcome_section_title));
@@ -34,5 +34,6 @@ public class WelcomeSection extends Fragment implements OnClickListener{
 		EditText pw = (EditText) MainActivity.getMainActivity().findViewById(R.id.editText2);
 		app.setUsername(user.getText().toString());
 		app.setPassword(pw.getText().toString());
+		app.saveChanges();
 	}
 }
