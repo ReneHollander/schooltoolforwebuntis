@@ -29,8 +29,8 @@ public class SettingsSection extends Fragment implements View.OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		EditText user = (EditText) MainActivity.getMainActivity().findViewById(R.id.editText1Settings);
-		EditText pw = (EditText) MainActivity.getMainActivity().findViewById(R.id.editText2Settings);
+		EditText user = (EditText) MainActivity.getMainActivity().findViewById(R.id.etusernameSettings);
+		EditText pw = (EditText) MainActivity.getMainActivity().findViewById(R.id.etpasswordSettings);
 		app.setUsername(user.getText().toString());
 		app.setPassword(pw.getText().toString());
 		app.saveChanges();
