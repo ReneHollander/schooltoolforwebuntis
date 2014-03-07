@@ -11,6 +11,8 @@ import org.json.JSONObject;
 import android.os.AsyncTask;
 import android.util.Log;
 import at.rene8888.schooltoolforwebuntis.data.Parameter;
+import at.rene8888.schooltoolforwebuntis.exception.UnexceptedErrorException;
+import at.rene8888.schooltoolforwebuntis.exception.UnexpectedResultException;
 
 public class GetDataTask extends AsyncTask<Parameter, Void, Object> {
 
@@ -62,7 +64,14 @@ public class GetDataTask extends AsyncTask<Parameter, Void, Object> {
 				writer.close();
 				reader.close();
 				ret = new JSONObject(sb.toString());
-				return ret.get("result");
+				if (ret.has("result")) {
+					return ret.get("result");
+				} else if (ret.has("error")) {
+					JSONObject jsonerror = ret.getJSONObject("error");
+					throw new UnexpectedResultException(in, jsonerror.getString("message"), jsonerror.getInt("code"));
+				} else {
+					throw new UnexceptedErrorException();
+				}
 			} catch (Exception e) {
 				Log.e("request", "errir while trying to get sessionid", e);
 				Log.d("json", in.toString());
