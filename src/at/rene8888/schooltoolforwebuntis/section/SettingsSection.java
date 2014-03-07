@@ -33,5 +33,11 @@ public class SettingsSection extends Fragment implements View.OnClickListener {
 		EditText pw = (EditText) MainActivity.getMainActivity().findViewById(R.id.editText2Settings);
 		app.setUsername(user.getText().toString());
 		app.setPassword(pw.getText().toString());
+		app.saveChanges();
+		updateSettings();
+	}
+	
+	public void updateSettings() {
+		// TODO
 	}
 }

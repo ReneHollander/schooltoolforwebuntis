@@ -1,29 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <EditText
-        android:id="@+id/editText1Settings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <EditText
         android:id="@+id/editText2Settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1Settings"
+        android:layout_below="@+id/editText1Settings"
         android:ems="10"
         android:inputType="textPassword" >
-
     </EditText>
 
     <Button
         android:id="@+id/buttonSaveSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText2Settings"
         android:text="@string/save" />
 
-</LinearLayout>
+    <EditText
+        android:id="@+id/editText1Settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20sp"
+        android:layout_toRightOf="@+id/textView1"
+        android:ems="10"
+        android:inputType="textPersonName" >
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editText1Settings"
+        android:layout_alignBottom="@+id/editText1Settings"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5sp"
+        android:text="@string/username" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editText2Settings"
+        android:layout_alignBottom="@+id/editText2Settings"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5sp"
+        android:text="@string/password" />
+
+</RelativeLayout>

@@ -15,7 +15,7 @@
         android:layout_marginTop="40sp"
         android:gravity="center"
         android:text="@string/time_placeholder"
-        android:textSize="90sp" />
+        android:textSize="80sp" />
 
     <TextView
         android:id="@+id/textViewHourOrBreak"
@@ -26,7 +26,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textViewTime"
         android:gravity="center"
-        android:text="@string/until_next_hour"
-        android:textSize="64sp" />
+        android:text="@string/until_next_lesson"
+        android:textSize="64dp" />
 
 </RelativeLayout>
