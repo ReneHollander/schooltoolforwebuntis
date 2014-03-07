@@ -1,4 +1,4 @@
-package at.rene8888.schooltoolforwebuntis.data;
+package at.rene8888.schooltoolforwebuntis.data.webuntis;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import at.rene8888.schooltoolforwebuntis.data.Parameter;
 
 public class GetDataTask extends AsyncTask<Parameter, Void, JSONObject> {
 

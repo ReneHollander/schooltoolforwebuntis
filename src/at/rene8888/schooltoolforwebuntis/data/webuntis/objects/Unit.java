@@ -1,4 +1,6 @@
-package at.rene8888.schooltoolforwebuntis.test;
+package at.rene8888.schooltoolforwebuntis.data.webuntis.objects;
+
+import at.rene8888.schooltoolforwebuntis.data.Time;
 
 public class Unit {
 

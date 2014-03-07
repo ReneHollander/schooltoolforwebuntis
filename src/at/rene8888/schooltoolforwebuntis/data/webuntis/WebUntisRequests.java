@@ -1,4 +1,4 @@
-package at.rene8888.schooltoolforwebuntis.data;
+package at.rene8888.schooltoolforwebuntis.data.webuntis;
 
 import java.io.IOException;
 
@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import android.util.Log;
 import at.rene8888.schooltoolforwebuntis.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
+import at.rene8888.schooltoolforwebuntis.data.Parameter;
 
 public class WebUntisRequests {
 

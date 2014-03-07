@@ -15,10 +15,10 @@ import android.widget.TextView;
 import at.rene8888.schooltoolforwebuntis.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.R;
 import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
-import at.rene8888.schooltoolforwebuntis.test.Unit;
-import at.rene8888.schooltoolforwebuntis.test.UnitTag;
-import at.rene8888.schooltoolforwebuntis.test.Updater;
-import at.rene8888.schooltoolforwebuntis.test.Util;
+import at.rene8888.schooltoolforwebuntis.data.Updater;
+import at.rene8888.schooltoolforwebuntis.data.Util;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.Unit;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.UnitTag;
 
 public class ClockSection extends Fragment {
 	private ApplicationClass app;

@@ -1,4 +1,4 @@
-package at.rene8888.schooltoolforwebuntis.data;
+package at.rene8888.schooltoolforwebuntis.data.webuntis;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

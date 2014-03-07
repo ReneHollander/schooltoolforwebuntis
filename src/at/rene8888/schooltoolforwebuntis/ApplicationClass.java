@@ -7,7 +7,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import at.rene8888.schooltoolforwebuntis.data.WebUntisRequests;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.WebUntisRequests;
 
 public class ApplicationClass extends Application {
 	private URL url;

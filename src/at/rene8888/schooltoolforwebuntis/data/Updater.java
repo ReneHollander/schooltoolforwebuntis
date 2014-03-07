@@ -1,9 +1,10 @@
-package at.rene8888.schooltoolforwebuntis.test;
+package at.rene8888.schooltoolforwebuntis.data;
 
 import java.util.List;
 
 import android.widget.TextView;
 import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.Unit;
 
 public class Updater extends Thread {
 

@@ -1,4 +1,4 @@
-package at.rene8888.schooltoolforwebuntis.test;
+package at.rene8888.schooltoolforwebuntis.data;
 
 public class Util {
 

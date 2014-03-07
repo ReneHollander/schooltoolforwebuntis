@@ -1,4 +1,4 @@
-package at.rene8888.schooltoolforwebuntis.test;
+package at.rene8888.schooltoolforwebuntis.data;
 
 import java.io.Serializable;
 import java.util.Calendar;

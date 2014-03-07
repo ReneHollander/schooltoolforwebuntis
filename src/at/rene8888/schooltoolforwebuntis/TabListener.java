@@ -5,14 +5,14 @@ import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 
-public class TabListener implements ActionBar.TabListener{
-	
+public class TabListener implements ActionBar.TabListener {
+
 	private ViewPager mViewPager;
-	
+
 	public TabListener(ViewPager mViewPager) {
 		this.mViewPager = mViewPager;
 	}
-	
+
 	@Override
 	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
 	}
@@ -20,7 +20,7 @@ public class TabListener implements ActionBar.TabListener{
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction arg1) {
 		this.mViewPager.setCurrentItem(tab.getPosition());
-		
+
 	}
 
 	@Override

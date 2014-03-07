@@ -10,7 +10,7 @@ import at.rene8888.schooltoolforwebuntis.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.R;
 import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
 
-public class SettingsSection extends Fragment implements View.OnClickListener{
+public class SettingsSection extends Fragment implements View.OnClickListener {
 	private ApplicationClass app;
 
 	public SettingsSection() {
