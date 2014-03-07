@@ -1,4 +1,4 @@
-package at.rene8888.schooltoolforwebuntis.data.webuntis;
+package at.rene8888.schooltoolforwebuntis.data.webuntis.network;
 
 import java.io.IOException;
 
@@ -33,14 +33,12 @@ public class WebUntisRequests {
 	}
 
 	public Object getData(String method, JSONObject params) throws JSONException, IOException {
+		Parameter parameter = new Parameter(method, params);
 		try {
-			Parameter parameter = new Parameter(method, params);
-
-			return this.gdt.execute(parameter).get().get("result");
+			return this.gdt.execute(parameter).get();
 		} catch (Exception e) {
 			Log.d("request", "error while trying to get data", e);
 			return null;
 		}
 	}
-
 }

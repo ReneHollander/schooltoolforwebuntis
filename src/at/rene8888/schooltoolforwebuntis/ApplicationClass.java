@@ -7,15 +7,22 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import at.rene8888.schooltoolforwebuntis.data.webuntis.WebUntisRequests;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.network.WebUntisRequests;
 
 public class ApplicationClass extends Application {
+
+	private static ApplicationClass app;
+
 	private URL url;
 	private String username;
 	private String password;
 	private SharedPreferences prefs;
 	private Editor editor;
 	private WebUntisRequests req;
+
+	public ApplicationClass() {
+		app = this;
+	}
 
 	@Override
 	public void onCreate() {
@@ -71,5 +78,9 @@ public class ApplicationClass extends Application {
 			this.req.getSessionID();
 		}
 		return this.req;
+	}
+
+	public static ApplicationClass getApplication() {
+		return app;
 	}
 }

@@ -1,4 +1,4 @@
-package at.rene8888.schooltoolforwebuntis.data.webuntis;
+package at.rene8888.schooltoolforwebuntis.data.webuntis.network;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -12,7 +12,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import at.rene8888.schooltoolforwebuntis.data.Parameter;
 
-public class GetDataTask extends AsyncTask<Parameter, Void, JSONObject> {
+public class GetDataTask extends AsyncTask<Parameter, Void, Object> {
 
 	private URL url;
 	private String sessionID;
@@ -23,33 +23,32 @@ public class GetDataTask extends AsyncTask<Parameter, Void, JSONObject> {
 	}
 
 	@Override
-	protected JSONObject doInBackground(Parameter... params) {
+	protected Object doInBackground(Parameter... params) {
 		if (params.length == 1) {
+			Parameter param = params[0];
+			JSONObject inparam = param.getParams();
+			JSONObject in = new JSONObject();
+			JSONObject ret = null;
 			try {
-				Parameter param = params[0];
+				in.put("jsonrpc", "2.0");
+				in.put("id", "1");
+				in.put("method", param.getMethod());
+				in.put("params", inparam);
 
-				JSONObject packet = new JSONObject();
-				packet.put("method", param.getMethod());
-				if (param.getParams() != null) {
-					packet.put("params", param.getParams());
-				}
-				packet.put("jsonrpc", "2.0");
-				packet.put("id", "1");
+				String injson = in.toString();
 
-				String json = packet.toString();
-
-				HttpURLConnection connection = (HttpURLConnection) this.url.openConnection();
+				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 				connection.setRequestMethod("POST");
 				connection.setDoInput(true);
 				connection.setDoOutput(true);
 				connection.setUseCaches(false);
 				connection.setRequestProperty("Content-Type", "application/json");
-				connection.setRequestProperty("Content-Length", String.valueOf(json.length()));
+				connection.setRequestProperty("Content-Length", String.valueOf(injson.length()));
 				connection.setRequestProperty("Cookie", "JSESSIONID=" + this.sessionID);
 
 				OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
 
-				writer.write(json.toString());
+				writer.write(injson);
 				writer.flush();
 
 				BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -62,10 +61,12 @@ public class GetDataTask extends AsyncTask<Parameter, Void, JSONObject> {
 
 				writer.close();
 				reader.close();
-
-				return new JSONObject(sb.toString());
+				ret = new JSONObject(sb.toString());
+				return ret.get("result");
 			} catch (Exception e) {
-				Log.e("request", "error while trying to get data", e);
+				Log.e("request", "errir while trying to get sessionid", e);
+				Log.d("json", in.toString());
+				Log.d("json", ret.toString());
 				return null;
 			}
 		} else {
