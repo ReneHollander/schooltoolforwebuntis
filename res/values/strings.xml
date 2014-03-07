@@ -15,5 +15,9 @@
 
     <!-- Settings Section Strings -->
     <string name="settings_section_title">Settings</string>
+    <string name="time_placeholder">32:57</string>
+    <string name="until_next_hour">until the next hour</string>
+    <string name="until_next_break">until the next break</string>
+    <string name="save">Save</string>
 
 </resources>
