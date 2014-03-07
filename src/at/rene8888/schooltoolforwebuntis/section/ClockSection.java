@@ -33,14 +33,14 @@ public class ClockSection extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.clock_section, container, false);
-
-		getData();
+		((TextView) rootView.findViewById(R.id.textViewTime)).setText("LOL");
+		getData(rootView);
 		return rootView;
 	}
 
-	public void getData() {
+	public void getData(View view) {
 
-		TextView tv = (TextView) MainActivity.getMainActivity().findViewById(R.id.textViewTime);
+		TextView tv = (TextView) view.findViewById(R.id.textViewTime);
 
 		List<Unit> unitList = new ArrayList<Unit>();
 
@@ -80,5 +80,4 @@ public class ClockSection extends Fragment {
 			e.printStackTrace();
 		}
 	}
-
 }

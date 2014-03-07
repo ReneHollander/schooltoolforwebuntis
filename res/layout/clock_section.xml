@@ -15,7 +15,7 @@
         android:layout_marginTop="40sp"
         android:gravity="center"
         android:text="@string/time_placeholder"
-        android:textSize="100sp" />
+        android:textSize="90sp" />
 
     <TextView
         android:id="@+id/textViewHourOrBreak"
