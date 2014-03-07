@@ -4,14 +4,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import at.rene8888.schooltoolforwebuntis.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.MainActivity;
 import at.rene8888.schooltoolforwebuntis.R;
 
-public class WelcomeSection extends Fragment implements OnClickListener {
+public class WelcomeSection extends Fragment implements View.OnClickListener {
 	private ApplicationClass app;
 
 	public WelcomeSection() {

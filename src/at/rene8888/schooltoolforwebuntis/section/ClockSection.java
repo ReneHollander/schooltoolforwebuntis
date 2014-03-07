@@ -1,7 +1,6 @@
 package at.rene8888.schooltoolforwebuntis.section;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import org.json.JSONArray;

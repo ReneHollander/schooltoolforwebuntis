@@ -5,11 +5,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.EditText;
+import at.rene8888.schooltoolforwebuntis.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.MainActivity;
 import at.rene8888.schooltoolforwebuntis.R;
 
-public class SettingsSection extends Fragment {
+public class SettingsSection extends Fragment implements View.OnClickListener{
+	private ApplicationClass app;
 
 	public SettingsSection() {
 		Bundle bundle = new Bundle();
@@ -20,8 +22,16 @@ public class SettingsSection extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.settings_section, container, false);
-		TextView dummyTextView = (TextView) rootView.findViewById(R.id.settings_test_label);
-		dummyTextView.setText("Settings!");
+		app = (ApplicationClass) MainActivity.getMainActivity().getApplication();
+		rootView.findViewById(R.id.buttonSaveSettings).setOnClickListener(this);
 		return rootView;
+	}
+
+	@Override
+	public void onClick(View v) {
+		EditText user = (EditText) MainActivity.getMainActivity().findViewById(R.id.editText1Settings);
+		EditText pw = (EditText) MainActivity.getMainActivity().findViewById(R.id.editText2Settings);
+		app.setUsername(user.getText().toString());
+		app.setPassword(pw.getText().toString());
 	}
 }
