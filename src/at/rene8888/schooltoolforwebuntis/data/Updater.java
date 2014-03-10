@@ -3,6 +3,7 @@ package at.rene8888.schooltoolforwebuntis.data;
 import java.util.List;
 
 import android.widget.TextView;
+import at.rene8888.schooltoolforwebuntis.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.Unit;
 
@@ -29,18 +30,18 @@ public class Updater extends Thread {
 			nextUnit: for (int i = 0; i < unitList.size(); i++) {
 				Unit u = unitList.get(i);
 				if (firstCycle) {
-					if (u.getStart().before(new Time()) && u.getEnd().before(new Time())) {
+					if (u.getStart().before(new Time(ApplicationClass.getApplication().getDelay())) && u.getEnd().before(new Time(ApplicationClass.getApplication().getDelay()))) {
 						continue nextUnit;
 					}
 				}
 
 				while (running) {
-					if (u.getEnd().equals(new Time())) {
+					if (u.getEnd().equals(new Time(ApplicationClass.getApplication().getDelay()))) {
 						break;
 					} else {
 						try {
 							final Time t2 = (Time) u.getEnd().clone();
-							t2.substract(new Time());
+							t2.substract(new Time(ApplicationClass.getApplication().getDelay()));
 							MainActivity.getMainActivity().runOnUiThread(new Runnable() {
 								public void run() {
 									tv.setText(t2.toString());

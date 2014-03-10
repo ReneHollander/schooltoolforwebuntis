@@ -43,7 +43,7 @@ public class TimeGrid {
 		}
 
 		this.unitList = new ArrayList<Unit>();
-		
+
 		for (int i = 0; i < rawUnits.size(); i++) {
 			if (i != 0) {
 				Unit prev = rawUnits.get(i - 1);

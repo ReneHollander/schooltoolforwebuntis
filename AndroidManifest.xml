@@ -8,8 +8,8 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
-    <uses-permission android:name="android.permission.INTERNET" >
-    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name="at.rene8888.schooltoolforwebuntis.ApplicationClass"
@@ -32,8 +32,7 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_welcome" >
         </activity>
-        <activity
-            android:name="at.rene8888.schooltoolforwebuntis.activity.PrefsActivity" >
+        <activity android:name="at.rene8888.schooltoolforwebuntis.activity.PrefsActivity" >
         </activity>
     </application>
 

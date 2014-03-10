@@ -11,6 +11,7 @@ import at.rene8888.schooltoolforwebuntis.PageChangeListener;
 import at.rene8888.schooltoolforwebuntis.R;
 import at.rene8888.schooltoolforwebuntis.SectionsPagerAdapter;
 import at.rene8888.schooltoolforwebuntis.TabListener;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.Teacher;
 
 public class MainActivity extends FragmentActivity {
 
@@ -24,6 +25,8 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		MAIN_ACTIVITY = this;
 		super.onCreate(savedInstanceState);
+
+		new Teacher();
 
 		ApplicationClass app = (ApplicationClass) this.getApplication();
 		if (app.getUsername() == null || app.getUsername().equals("") || app.getPassword() == null || app.getPassword().equals("")) {
