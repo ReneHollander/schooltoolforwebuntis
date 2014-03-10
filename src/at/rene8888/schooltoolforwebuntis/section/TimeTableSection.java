@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import at.rene8888.schooltoolforwebuntis.R;
 import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.TimeGrid;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.Unit;
 
 public class TimeTableSection extends Fragment {
 
@@ -21,7 +23,15 @@ public class TimeTableSection extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.timetable_section, container, false);
 		TextView dummyTextView = (TextView) rootView.findViewById(R.id.timetable_test_label);
-		dummyTextView.setText("TimeTable!");
+
+		String out = "";
+
+		for (Unit u : new TimeGrid().getUnitList()) {
+			out += "\r\n" + u.toString();
+		}
+
+		dummyTextView.setText(out);
+
 		return rootView;
 	}
 

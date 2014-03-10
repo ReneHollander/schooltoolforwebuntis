@@ -61,6 +61,7 @@ public class TimeGrid {
 				newUnitList.add(unitList.get(i));
 			}
 		}
+		
 	}
 
 }
