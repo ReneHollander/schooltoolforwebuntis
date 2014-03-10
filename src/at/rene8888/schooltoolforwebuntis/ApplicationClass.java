@@ -16,6 +16,7 @@ public class ApplicationClass extends Application {
 	private URL url;
 	private String username;
 	private String password;
+	private int delay;
 	private SharedPreferences prefs;
 	private Editor editor;
 	private WebUntisRequests req;
@@ -40,11 +41,13 @@ public class ApplicationClass extends Application {
 	public void update() {
 		this.username = prefs.getString("username", null);
 		this.password = prefs.getString("password", null);
+		this.delay = prefs.getInt("delay", 0);
 	}
 
 	public void saveChanges() {
 		editor.putString("username", this.getUsername());
 		editor.putString("password", this.getPassword());
+		editor.putInt("delay", this.getDelay());
 		editor.commit();
 	}
 
@@ -62,6 +65,14 @@ public class ApplicationClass extends Application {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public void setDelay(int delay) {
+		this.delay = delay;
+	}
+
+	public int getDelay() {
+		return this.delay;
 	}
 
 	public URL getURL() {

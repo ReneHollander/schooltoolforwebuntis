@@ -14,5 +14,18 @@
             android:summary="Enter your password"
             android:title="Password" />
     </PreferenceCategory>
+    <PreferenceCategory
+        android:summary="Delay"
+        android:title="Delay" >
+        <at.rene8888.schooltoolforwebuntis.section.TimePreference
+            android:key="delayTime"
+            android:summary="Click to set the delay"
+            android:title="Set Delay" />
+
+        <Preference
+            android:key="resetButton"
+            android:summary="Click to reset the delay"
+            android:title="Reset delay" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
