@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.TimePicker;
 import at.rene8888.schooltoolforwebuntis.ApplicationClass;
@@ -53,7 +54,7 @@ public class TimePreference extends DialogPreference {
 		super.onDialogClosed(positiveResult);
 
 		if (positiveResult) {
-		
+
 			lastHour = picker.getCurrentHour();
 			lastMinute = picker.getCurrentMinute();
 
@@ -65,8 +66,14 @@ public class TimePreference extends DialogPreference {
 			ApplicationClass app = ApplicationClass.getApplication();
 			app.setDelay(0);
 			Time t1 = new Time(lastHour, lastMinute, 0);
-			t1.substract(new Time());
-			app.setDelay(t1.getInSeconds());
+			Time now = new Time();
+			if (t1.after(now)) {
+				t1.substract(now);
+				app.setDelay(t1.getInSeconds());
+			} else {
+				t1.substract(now);
+				app.setDelay(t1.getInSeconds() * (-1));
+			}
 			app.saveChanges();
 		}
 	}
