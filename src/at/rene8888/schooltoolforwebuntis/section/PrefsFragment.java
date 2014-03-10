@@ -3,16 +3,20 @@ package at.rene8888.schooltoolforwebuntis.section;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import at.rene8888.schooltoolforwebuntis.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.R;
 
-public class PrefsFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener {
+public class PrefsFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.prefs);
 		this.getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+		Preference button = (Preference) findPreference("resetButton");
+		button.setOnPreferenceClickListener(this);
 	}
 
 	@Override
@@ -20,4 +24,11 @@ public class PrefsFragment extends PreferenceFragment implements OnSharedPrefere
 		// TODO: Update Timer
 	}
 
+	@Override
+	public boolean onPreferenceClick(Preference preference) {
+		ApplicationClass app = ApplicationClass.getApplication();
+		app.setDelay(0);
+		app.saveChanges();
+		return true;
+	}
 }
