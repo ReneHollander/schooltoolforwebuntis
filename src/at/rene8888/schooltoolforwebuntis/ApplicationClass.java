@@ -4,9 +4,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import android.app.Application;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.network.WebUntisRequests;
 
 public class ApplicationClass extends Application {
@@ -27,16 +27,14 @@ public class ApplicationClass extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		this.prefs = getSharedPreferences("at.rene8888.schooltoolforwebuntis", Context.MODE_PRIVATE);
+		this.prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		this.editor = prefs.edit();
 		this.update();
-
 		try {
 			this.url = new URL("https://stpl.tgm.ac.at/WebUntis/jsonrpc.do?school=tgm");
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public void update() {
