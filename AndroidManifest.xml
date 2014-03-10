@@ -32,6 +32,9 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_welcome" >
         </activity>
+        <activity
+            android:name="at.rene8888.schooltoolforwebuntis.activity.PrefsActivity" >
+        </activity>
     </application>
 
 </manifest>

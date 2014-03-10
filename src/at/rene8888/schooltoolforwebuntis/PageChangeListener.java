@@ -23,5 +23,4 @@ public class PageChangeListener implements OnPageChangeListener {
 	public void onPageSelected(int position) {
 		actionBar.setSelectedNavigationItem(position);
 	}
-
 }

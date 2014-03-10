@@ -20,7 +20,6 @@ public class TabListener implements ActionBar.TabListener {
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction arg1) {
 		this.mViewPager.setCurrentItem(tab.getPosition());
-
 	}
 
 	@Override

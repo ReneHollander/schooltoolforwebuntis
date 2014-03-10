@@ -5,53 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/etpasswordSettings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etusernameSettings"
-        android:layout_below="@+id/etusernameSettings"
-        android:ems="10"
-        android:inputType="textPassword" >
-    </EditText>
-
     <Button
-        android:id="@+id/buttonSaveSettings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/etpasswordSettings"
-        android:text="@string/save" />
-
-    <EditText
-        android:id="@+id/etusernameSettings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="20sp"
-        android:layout_toRightOf="@+id/tvusernameSettings"
-        android:ems="10"
-        android:inputType="textPersonName" >
-    </EditText>
-
-    <TextView
-        android:id="@+id/tvusernameSettings"
+        android:id="@+id/bSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/etusernameSettings"
-        android:layout_alignBottom="@+id/etusernameSettings"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="5sp"
-        android:text="@string/username" />
-
-    <TextView
-        android:id="@+id/tvpasswordSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/etpasswordSettings"
-        android:layout_alignBottom="@+id/etpasswordSettings"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="5sp"
-        android:text="@string/password" />
+        android:layout_alignParentRight="true"
+        android:text="@string/settings" />
 
 </RelativeLayout>
