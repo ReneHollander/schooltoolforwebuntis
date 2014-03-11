@@ -65,7 +65,7 @@ public class TimePreference extends DialogPreference {
 			ApplicationClass app = ApplicationClass.getApplication();
 			app.setDelay(0);
 			Time t1 = new Time(lastHour, lastMinute, 0);
-			Time now = new Time();
+			Time now = new Time(ApplicationClass.getApplication().getDelay());
 			if (t1.after(now)) {
 				t1.substract(now);
 				app.setDelay(t1.getInSeconds());

@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import at.rene8888.schooltoolforwebuntis.ApplicationClass;
-
 public class Time implements Serializable, Cloneable {
 
 	private static final long serialVersionUID = 1396468218851613851L;
@@ -15,12 +13,14 @@ public class Time implements Serializable, Cloneable {
 	private int hr;
 	private int min;
 	private int sec;
-	private int delay;
 
 	public Time() {
+		this(0);
+	}
+
+	public Time(int offset) {
 		Calendar cal = Calendar.getInstance(TIMEZONE);
-		this.setDelay(ApplicationClass.getApplication().getDelay());
-		cal.add(Calendar.SECOND, delay);
+		cal.add(Calendar.SECOND, offset);
 		this.setHr(cal.get(Calendar.HOUR_OF_DAY));
 		this.setMin(cal.get(Calendar.MINUTE));
 		this.setSec(cal.get(Calendar.SECOND));
@@ -73,14 +73,6 @@ public class Time implements Serializable, Cloneable {
 
 	public int getSec() {
 		return this.sec;
-	}
-
-	public int getDelay() {
-		return delay;
-	}
-
-	public void setDelay(int delay) {
-		this.delay = delay;
 	}
 
 	public int getInSeconds() {
