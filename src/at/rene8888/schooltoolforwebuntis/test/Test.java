@@ -1,15 +1,14 @@
 package at.rene8888.schooltoolforwebuntis.test;
 
-import at.rene8888.schooltoolforwebuntis.data.webuntis.Rooms;
-import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.Room;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.Data;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.Subject;
 
 public class Test {
 
 	public Test() {
-
-		for (Room r : new Rooms().getAllRoomsAsArrayList()) {
-			System.out.println(r);
+		Data data = new Data();
+		for (Subject s : data.getSubjects().getAllSubjectsAsArrayList()) {
+			System.out.println(s);
 		}
 	}
-
 }

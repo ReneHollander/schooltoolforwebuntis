@@ -8,9 +8,7 @@ public class TimeTable {
 
 	public TimeTable(String schoolClass) {
 		this.schoolClass = schoolClass;
-		
-		
-		
+
 	}
 
 	public String getSchoolClass() {

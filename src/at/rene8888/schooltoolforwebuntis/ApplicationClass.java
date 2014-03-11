@@ -54,7 +54,7 @@ public class ApplicationClass extends Application {
 	public SharedPreferences getPrefs() {
 		return prefs;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
@@ -70,7 +70,7 @@ public class ApplicationClass extends Application {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public void setDelay(int delay) {
 		this.delay = delay;
 	}
