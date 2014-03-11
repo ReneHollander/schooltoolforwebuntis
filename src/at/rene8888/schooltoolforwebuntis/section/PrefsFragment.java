@@ -7,6 +7,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import at.rene8888.schooltoolforwebuntis.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.R;
+import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
 
 public class PrefsFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
@@ -21,6 +22,7 @@ public class PrefsFragment extends PreferenceFragment implements OnSharedPrefere
 
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+		MainActivity.getMainActivity().updateScreenLock();
 		// TODO: Update Timer
 	}
 

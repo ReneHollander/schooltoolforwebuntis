@@ -51,6 +51,10 @@ public class ApplicationClass extends Application {
 		editor.commit();
 	}
 
+	public SharedPreferences getPrefs() {
+		return prefs;
+	}
+	
 	public String getUsername() {
 		return username;
 	}

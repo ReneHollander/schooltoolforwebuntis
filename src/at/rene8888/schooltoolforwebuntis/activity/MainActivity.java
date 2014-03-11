@@ -17,7 +17,7 @@ public class MainActivity extends FragmentActivity {
 	private SectionsPagerAdapter mSectionsPagerAdapter;
 
 	private ViewPager mViewPager;
-
+	private ApplicationClass app;
 	private static MainActivity MAIN_ACTIVITY;
 
 	@Override
@@ -25,7 +25,8 @@ public class MainActivity extends FragmentActivity {
 		MAIN_ACTIVITY = this;
 		super.onCreate(savedInstanceState);
 
-		ApplicationClass app = (ApplicationClass) this.getApplication();
+		app = (ApplicationClass) this.getApplication();
+
 		if (app.getUsername() == null || app.getUsername().equals("") || app.getPassword() == null || app.getPassword().equals("")) {
 			goToWelcome();
 		} else {
@@ -47,6 +48,15 @@ public class MainActivity extends FragmentActivity {
 	public void goToWelcome() {
 		Intent i = new Intent(this, WelcomeActivity.class);
 		startActivity(i);
+	}
+
+	public void updateScreenLock() {
+
+		if (app.getPrefs().getBoolean("autoLockOff", false)) {
+			getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		} else {
+			getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		}
 	}
 
 	@Override

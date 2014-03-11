@@ -27,5 +27,14 @@
             android:summary="Click to reset the delay"
             android:title="Reset delay" />
     </PreferenceCategory>
+    <PreferenceCategory
+        android:summary="Autolock"
+        android:title="Autolock" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="autoLockOff"
+            android:summary="Do not lock automatically"
+            android:title="Autolock off" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
