@@ -11,7 +11,6 @@ import at.rene8888.schooltoolforwebuntis.PageChangeListener;
 import at.rene8888.schooltoolforwebuntis.R;
 import at.rene8888.schooltoolforwebuntis.SectionsPagerAdapter;
 import at.rene8888.schooltoolforwebuntis.TabListener;
-import at.rene8888.schooltoolforwebuntis.test.Test;
 
 public class MainActivity extends FragmentActivity {
 
@@ -28,8 +27,7 @@ public class MainActivity extends FragmentActivity {
 
 		app = (ApplicationClass) this.getApplication();
 
-		new Test();
-
+		// new Test();
 		if (app.getUsername() == null || app.getUsername().equals("") || app.getPassword() == null || app.getPassword().equals("")) {
 			goToWelcome();
 		} else {
@@ -45,6 +43,7 @@ public class MainActivity extends FragmentActivity {
 			for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
 				actionBar.addTab(actionBar.newTab().setText(mSectionsPagerAdapter.getPageTitle(i)).setTabListener(new TabListener(this.mViewPager)));
 			}
+			updateScreenLock();
 		}
 	}
 
@@ -54,7 +53,6 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	public void updateScreenLock() {
-
 		if (app.getPrefs().getBoolean("autoLockOff", false)) {
 			getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		} else {
