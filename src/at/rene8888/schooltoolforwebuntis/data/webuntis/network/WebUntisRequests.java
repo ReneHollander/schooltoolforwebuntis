@@ -63,7 +63,18 @@ public class WebUntisRequests {
 		}
 	}
 
+	public void logOut() {
+		try {
+			this.getData("logout", null);
+		} catch (Exception e) {
+			Log.e("request", "error while logging out", e);
+		}
+	}
+
 	public Object getData(String method, JSONObject inparam) throws JSONException, IOException {
+		if (this.sessionID == null || this.sessionID.equals("")) {
+			throw new IllegalStateException("no session id");
+		}
 		JSONObject in = new JSONObject();
 		JSONObject ret = null;
 		try {

@@ -13,19 +13,19 @@ public class Department {
 	}
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public String getLongName() {
-		return longName;
+		return this.longName;
 	}
 
 	public String toString() {
-		return "[Id=" + this.id + ", Name=" + this.name + ", LongName=" + this.longName + "]";
+		return "[Id=" + this.id + "; Name=" + this.name + "; LongName=" + this.longName + "]";
 	}
 
 }

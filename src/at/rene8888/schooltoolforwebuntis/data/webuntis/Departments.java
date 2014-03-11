@@ -14,10 +14,6 @@ public class Departments {
 
 	private SparseArray<Department> departments;
 
-	public Departments() {
-
-	}
-
 	private void fillList() {
 		try {
 			this.departments = new SparseArray<Department>();
@@ -38,23 +34,26 @@ public class Departments {
 	}
 
 	public Department getDepartmentById(int id) {
-		if (departments == null) {
+		if (this.departments == null) {
 			this.fillList();
 		}
 		return this.departments.get(id);
 	}
 
 	public SparseArray<Department> getAllDepartments() {
-		if (departments == null) {
+		if (this.departments == null) {
 			this.fillList();
 		}
 		return this.departments;
 	}
 
 	public ArrayList<Department> getAllDepartmentsAsArrayList() {
+		if (this.departments == null) {
+			this.fillList();
+		}
 		ArrayList<Department> ret = new ArrayList<Department>();
-		for (int i = 0; i < departments.size(); i++) {
-			ret.add(departments.get(departments.keyAt(i)));
+		for (int i = 0; i < this.departments.size(); i++) {
+			ret.add(this.departments.get(this.departments.keyAt(i)));
 		}
 		return ret;
 	}
