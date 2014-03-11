@@ -1,13 +1,14 @@
-package at.rene8888.schooltoolforwebuntis.data;
+package at.rene8888.schooltoolforwebuntis.thread;
 
 import java.util.List;
 
 import android.widget.TextView;
 import at.rene8888.schooltoolforwebuntis.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
+import at.rene8888.schooltoolforwebuntis.data.Time;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.Unit;
 
-public class Updater extends Thread {
+public class ClockUpdateThread extends Thread {
 
 	private List<Unit> unitList;
 
@@ -15,7 +16,7 @@ public class Updater extends Thread {
 
 	private TextView tv;
 
-	public Updater(List<Unit> unitList, TextView tv) {
+	public ClockUpdateThread(List<Unit> unitList, TextView tv) {
 		this.unitList = unitList;
 		this.running = true;
 		this.tv = tv;

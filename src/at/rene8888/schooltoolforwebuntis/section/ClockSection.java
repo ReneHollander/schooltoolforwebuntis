@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import at.rene8888.schooltoolforwebuntis.R;
 import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
-import at.rene8888.schooltoolforwebuntis.data.Updater;
-import at.rene8888.schooltoolforwebuntis.data.webuntis.TimeGrid;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.Data;
+import at.rene8888.schooltoolforwebuntis.thread.ClockUpdateThread;
 
 public class ClockSection extends Fragment {
 
@@ -23,7 +23,7 @@ public class ClockSection extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.clock_section, container, false);
 		TextView tv = (TextView) rootView.findViewById(R.id.textViewTime);
-		new Updater(new TimeGrid().getUnitList(), tv).start();
+		new ClockUpdateThread(Data.getData().getTimeGrid().getUnitList(), tv).start();
 		return rootView;
 	}
 }

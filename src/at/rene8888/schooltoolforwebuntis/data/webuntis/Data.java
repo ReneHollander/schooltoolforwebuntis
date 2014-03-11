@@ -64,6 +64,9 @@ public class Data {
 	}
 
 	public static Data getData() {
+		if (DATA == null) {
+			DATA = new Data();
+		}
 		return DATA;
 	}
 }

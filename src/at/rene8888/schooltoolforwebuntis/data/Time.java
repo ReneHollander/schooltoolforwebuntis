@@ -143,7 +143,7 @@ public class Time implements Serializable, Cloneable {
 		}
 	}
 
-	protected Object clone() {
+	public Object clone() {
 		Time clone;
 		try {
 			clone = (Time) super.clone();
