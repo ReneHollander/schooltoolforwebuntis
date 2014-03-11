@@ -23,7 +23,8 @@ public class ClockSection extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.clock_section, container, false);
 		TextView tv = (TextView) rootView.findViewById(R.id.textViewTime);
-		new ClockUpdateThread(Data.getData().getTimeGrid().getUnitList(), tv).start();
+		TextView desc = (TextView) rootView.findViewById(R.id.textViewHourOrBreak);
+		new ClockUpdateThread(Data.getData().getTimeGrid().getUnitList(), tv, desc).start();
 		return rootView;
 	}
 }
