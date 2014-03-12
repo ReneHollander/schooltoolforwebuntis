@@ -1,15 +1,16 @@
 package at.rene8888.schooltoolforwebuntis.data.webuntis.objects;
 
 import at.rene8888.schooltoolforwebuntis.data.Time;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.type.UnitType;
 
 public class Unit {
 
 	private Time start;
 	private Time end;
 
-	private UnitTag tag;
+	private UnitType tag;
 
-	public Unit(Time start, Time end, UnitTag tag) {
+	public Unit(Time start, Time end, UnitType tag) {
 		this.start = start;
 		this.end = end;
 		this.tag = tag;
@@ -23,7 +24,7 @@ public class Unit {
 		return this.end;
 	}
 
-	public UnitTag getTag() {
+	public UnitType getTag() {
 		return this.tag;
 	}
 

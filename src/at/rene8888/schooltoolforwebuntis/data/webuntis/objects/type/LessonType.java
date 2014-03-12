@@ -1,4 +1,4 @@
-package at.rene8888.schooltoolforwebuntis.data.webuntis.objects;
+package at.rene8888.schooltoolforwebuntis.data.webuntis.objects.type;
 
 public enum LessonType {
 

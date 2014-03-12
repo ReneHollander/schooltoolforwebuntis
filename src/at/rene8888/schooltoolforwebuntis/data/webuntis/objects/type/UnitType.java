@@ -1,12 +1,12 @@
-package at.rene8888.schooltoolforwebuntis.data.webuntis.objects;
+package at.rene8888.schooltoolforwebuntis.data.webuntis.objects.type;
 
-public enum UnitTag {
+public enum UnitType {
 
 	LESSON("lesson"), BREAK("break");
 
 	private String name;
 
-	UnitTag(String name) {
+	UnitType(String name) {
 		this.name = name;
 	}
 

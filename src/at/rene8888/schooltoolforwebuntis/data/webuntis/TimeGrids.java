@@ -11,9 +11,9 @@ import android.util.Log;
 import at.rene8888.schooltoolforwebuntis.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.data.Util;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.Unit;
-import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.UnitTag;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.type.UnitType;
 
-public class TimeGrid {
+public class TimeGrids {
 
 	private ArrayList<Unit> unitList;
 
@@ -38,7 +38,7 @@ public class TimeGrid {
 			JSONObject unit = units.getJSONObject(j);
 			int startTime = unit.getInt("startTime");
 			int endTime = unit.getInt("endTime");
-			Unit u = new Unit(Util.createTime(startTime + ""), Util.createTime(endTime + ""), UnitTag.LESSON);
+			Unit u = new Unit(Util.createTime(startTime + ""), Util.createTime(endTime + ""), UnitType.LESSON);
 			rawUnits.add(u);
 		}
 
@@ -49,7 +49,7 @@ public class TimeGrid {
 				Unit prev = rawUnits.get(i - 1);
 				Unit curr = rawUnits.get(i);
 				if (prev.getEnd().equals(curr.getStart()) == false) {
-					Unit pause = new Unit(prev.getEnd(), curr.getStart(), UnitTag.BREAK);
+					Unit pause = new Unit(prev.getEnd(), curr.getStart(), UnitType.BREAK);
 					this.unitList.add(prev);
 					this.unitList.add(pause);
 				} else if (prev.getEnd().equals(curr.getStart())) {

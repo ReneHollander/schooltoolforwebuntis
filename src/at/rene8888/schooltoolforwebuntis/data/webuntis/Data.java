@@ -4,8 +4,8 @@ public class Data {
 
 	private static Data DATA;
 
-	private TimeGrid timeGrid;
-	private TimeTable timeTable;
+	private TimeGrids timeGrid;
+	private TimeTables timeTables;
 	private Rooms rooms;
 	private SchoolClasses schoolClasses;
 	private Departments departments;
@@ -17,22 +17,18 @@ public class Data {
 		DATA = this;
 	}
 
-	public TimeGrid getTimeGrid() {
+	public TimeGrids getTimeGrid() {
 		if (this.timeGrid == null) {
-			this.timeGrid = new TimeGrid();
+			this.timeGrid = new TimeGrids();
 		}
 		return this.timeGrid;
 	}
 
-	public TimeTable getTimeTable(String schoolClass) {
-		if (this.timeTable == null) {
-			this.timeTable = new TimeTable(schoolClass);
+	public TimeTables getTimeTable() {
+		if (this.timeTables == null) {
+			this.timeTables = new TimeTables();
 		}
-		if (this.timeTable.getSchoolClass().equals(schoolClass)) {
-			return this.timeTable;
-		} else {
-			return new TimeTable(schoolClass);
-		}
+		return this.timeTables;
 	}
 
 	public Rooms getRooms() {

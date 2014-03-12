@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import at.rene8888.schooltoolforwebuntis.R;
 import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
-import at.rene8888.schooltoolforwebuntis.data.webuntis.TimeGrid;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.TimeGrids;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.Unit;
 
 public class TimeTableSection extends Fragment {
@@ -26,7 +26,7 @@ public class TimeTableSection extends Fragment {
 
 		String out = "";
 
-		for (Unit u : new TimeGrid().getUnitList()) {
+		for (Unit u : new TimeGrids().getUnitList()) {
 			out += "\r\n" + u.toString();
 		}
 
