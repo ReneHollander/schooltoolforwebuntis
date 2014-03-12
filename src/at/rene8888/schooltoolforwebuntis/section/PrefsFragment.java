@@ -29,8 +29,10 @@ public class PrefsFragment extends PreferenceFragment implements OnSharedPrefere
 	@Override
 	public boolean onPreferenceClick(Preference preference) {
 		ApplicationClass app = ApplicationClass.getApplication();
-		app.setDelay(0);
-		app.saveChanges();
+		if (preference.getKey().equals("resetButton")) {
+			app.setDelay(0);
+			app.saveChanges();
+		}
 		return true;
 	}
 }
