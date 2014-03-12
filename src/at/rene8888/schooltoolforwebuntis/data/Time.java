@@ -1,25 +1,25 @@
 package at.rene8888.schooltoolforwebuntis.data;
 
-import java.io.Serializable;
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-public class Time implements Serializable, Cloneable {
-
-	private static final long serialVersionUID = 1396468218851613851L;
-
-	private static final TimeZone TIMEZONE = TimeZone.getDefault();
-
-	private int hr;
-	private int min;
+public class Time implements Externalizable, Cloneable {
 	private int sec;
 
 	public Time() {
-		this(0);
+		this(TimeZone.getDefault(), 0);
+	}
+	
+	public Time(int offset) {
+		this(TimeZone.getDefault(), offset);
 	}
 
-	public Time(int offset) {
-		Calendar cal = Calendar.getInstance(TIMEZONE);
+	public Time(TimeZone tz, int offset) {
+		Calendar cal = Calendar.getInstance(tz);
 		cal.add(Calendar.SECOND, offset);
 		this.setHr(cal.get(Calendar.HOUR_OF_DAY));
 		this.setMin(cal.get(Calendar.MINUTE));
@@ -32,51 +32,94 @@ public class Time implements Serializable, Cloneable {
 		this.setSec(sec);
 	}
 
+	public void set(int hr, int min, int sec) {
+		this.setHr(hr);
+		this.setMin(min);
+		this.setSec(sec);
+	}
+
 	public void setHr(int i) {
-		this.hr = 0;
-		this.addHr(i);
+		if (i > 0) {
+			i = this.minimizeInt(i, 24);
+			int sec = this.getSec();
+			int min = this.getMin();
+			int newsec = i * 60 * 60 + min * 60 + sec;
+			this.sec = this.minimizeInt(newsec, 86400);
+		}
 	}
 
 	public void setMin(int i) {
-		this.min = 0;
-		this.addMin(i);
+		if (i > 0) {
+			int sec = this.getSec();
+			int hr = this.getHr();
+			int newsec = hr * 60 * 60 + i * 60 + sec;
+			this.sec = this.minimizeInt(newsec, 86400);
+		}
 	}
 
 	public void setSec(int i) {
-		this.sec = 0;
-		this.addSec(i);
+		if (i > 0) {
+			int min = this.getMin();
+			int hr = this.getHr();
+			int newsec = hr * 60 * 60 + min * 60 + i;
+			this.sec = this.minimizeInt(newsec, 86400);
+		}
 	}
 
 	public void addHr(int i) {
-		this.hr = minimizeInt(this.hr + i, 24);
+		if (i > 0) {
+			this.addMin(i * 60);
+		}
 	}
 
 	public void addMin(int i) {
-		int j = this.min + i;
-		this.min = minimizeInt(j, 60);
-		this.addHr(j / 60);
+		if (i > 0) {
+			this.addSec(i * 60);
+		}
 	}
 
 	public void addSec(int i) {
-		int j = this.sec + i;
-		this.sec = minimizeInt(j, 60);
-		this.addMin(j / 60);
+		if (i > 0) {
+			this.sec = minimizeInt(this.getInSeconds() + i, 86400);
+		}
+	}
+
+	public void subHr(int i) {
+		if (i > 0) {
+			this.subMin(i * 60);
+		}
+	}
+
+	public void subMin(int i) {
+		if (i > 0) {
+			this.subSec(i * 60);
+		}
+	}
+
+	public void subSec(int i) {
+		if (i > 0) {
+			int j = this.getInSeconds() - i;
+			while (j < 0) {
+				j += 86400;
+			}
+			this.sec = j;
+		}
 	}
 
 	public int getHr() {
-		return this.hr;
+		return this.sec / 3600 % 60;
 	}
 
 	public int getMin() {
-		return this.min;
+		return this.sec / 60 % 60;
 	}
 
 	public int getSec() {
-		return this.sec;
+		return this.sec % 60;
 	}
 
 	public int getInSeconds() {
-		return this.hr * 3600 + this.min * 60 + this.sec;
+		return this.sec;
 	}
 
 	public String toString() {
@@ -117,20 +160,6 @@ public class Time implements Serializable, Cloneable {
 		}
 	}
 
-	public void substract(Time t2) {
-		int newsec = this.getInSeconds() - t2.getInSeconds();
-		this.setSec(newsec % 60);
-		this.setMin(newsec / 60 % 60);
-		this.setHr(newsec / 60 / 60 % 60);
-	}
-
-	public void add(Time t2) {
-		int newsec = this.getInSeconds() + t2.getInSeconds();
-		this.setSec(newsec % 60);
-		this.setMin(newsec / 60 % 60);
-		this.setHr(newsec / 60 / 60 % 60);
-	}
-
 	public boolean equals(Object t) {
 		if (t instanceof Time) {
 			if (this.getInSeconds() == ((Time) t).getInSeconds()) {
@@ -143,13 +172,19 @@ public class Time implements Serializable, Cloneable {
 		}
 	}
 
+	public void substract(Time t2) {
+		this.subSec(t2.getInSeconds());
+	}
+
+	public void add(Time t2) {
+		this.addSec(t2.getInSeconds());
+	}
+
 	public Object clone() {
 		Time clone;
 		try {
 			clone = (Time) super.clone();
 			clone.sec = this.sec;
-			clone.min = this.min;
-			clone.hr = this.hr;
 			return clone;
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
@@ -159,6 +194,16 @@ public class Time implements Serializable, Cloneable {
 
 	private int minimizeInt(int input, int max) {
 		return Math.abs(input) % max;
+	}
+
+	@Override
+	public void readExternal(ObjectInput oi) throws IOException, ClassNotFoundException {
+		this.sec = oi.readInt();
+	}
+
+	@Override
+	public void writeExternal(ObjectOutput oo) throws IOException {
+		oo.writeInt(this.sec);
 	}
 
 }
