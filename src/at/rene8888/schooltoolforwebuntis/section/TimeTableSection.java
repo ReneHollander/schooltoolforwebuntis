@@ -20,7 +20,6 @@ import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.timetable.SchoolC
 import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.timetable.SchoolClassTimeTableUnit;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.timetable.TimeTableEntry;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.type.UnitType;
-import at.rene8888.schooltoolforwebuntis.util.Util;
 
 public class TimeTableSection extends Fragment {
 
@@ -36,7 +35,7 @@ public class TimeTableSection extends Fragment {
 
 		TextView tv = (TextView) rootView.findViewById(R.id.timetable_test_label);
 
-		SchoolClassTimeTable sctt = new SchoolClassTimeTable(Data.getData().getSchoolClasses().getSchoolClassById(591), Util.convertToYYYYMMDD(Calendar.getInstance()));
+		SchoolClassTimeTable sctt = new SchoolClassTimeTable(Data.getData().getSchoolClasses().getSchoolClassById(591), Calendar.getInstance());
 
 		StringBuilder out = new StringBuilder();
 

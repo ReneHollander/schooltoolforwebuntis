@@ -1,10 +1,18 @@
 package at.rene8888.schooltoolforwebuntis.data.webuntis;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
+import org.json.JSONArray;
+
+import android.os.Environment;
+import at.rene8888.schooltoolforwebuntis.ApplicationClass;
+
 public class Data {
 
 	private static Data DATA;
 
-	private TimeGrids timeGrid;
+	private TimeGrids timeGrids;
 	private TimeTables timeTables;
 	private Rooms rooms;
 	private SchoolClasses schoolClasses;
@@ -29,6 +37,17 @@ public class Data {
 
 	public Data() {
 		DATA = this;
+
+		try {
+			JSONArray ja = (JSONArray) ApplicationClass.getApplication().getWebUntisRequests().getData("getTimegridUnits", null);
+			File sd = Environment.getExternalStorageDirectory();
+			File file = new File(sd, "testFile.txt");
+			FileOutputStream fos = new FileOutputStream(file);
+			fos.write(ja.toString(4).getBytes());
+			fos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void activateAll() {
@@ -37,14 +56,14 @@ public class Data {
 		this.getSchoolClasses();
 		this.getSubjects();
 		this.getTeachers();
-		this.getTimeGrid();
+		this.getTimeGrids();
 	}
 
-	public TimeGrids getTimeGrid() {
-		if (this.timeGrid == null) {
-			this.timeGrid = new TimeGrids();
+	public TimeGrids getTimeGrids() {
+		if (this.timeGrids == null) {
+			this.timeGrids = new TimeGrids();
 		}
-		return this.timeGrid;
+		return this.timeGrids;
 	}
 
 	public TimeTables getTimeTable() {

@@ -1,6 +1,7 @@
 package at.rene8888.schooltoolforwebuntis.data.webuntis.objects.timetable;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,11 +26,11 @@ public class SchoolClassTimeTable {
 	private ArrayList<TimeTableEntry<SchoolClassTimeTableUnit>> units;
 
 	private SchoolClass schoolClass;
-	private String date;
+	private Calendar cal;
 
-	public SchoolClassTimeTable(SchoolClass schoolClass, String date) {
+	public SchoolClassTimeTable(SchoolClass schoolClass, Calendar cal) {
 		this.schoolClass = schoolClass;
-		this.date = date;
+		this.cal = cal;
 	}
 
 	private void fillList() {
@@ -41,8 +42,9 @@ public class SchoolClassTimeTable {
 			JSONObject params = new JSONObject();
 			params.put("id", this.schoolClass.getId());
 			params.put("type", "1");
-			params.put("startDate", this.date);
-			params.put("endDate", this.date);
+			String date = Util.convertToYYYYMMDD(this.cal);
+			params.put("startDate", date);
+			params.put("endDate", date);
 
 			JSONArray ja = (JSONArray) ApplicationClass.getApplication().getWebUntisRequests().getData("getTimetable", params);
 
@@ -51,7 +53,7 @@ public class SchoolClassTimeTable {
 
 				Time start = Util.createTime(curr.getString("startTime"));
 				Time end = Util.createTime(curr.getString("endTime"));
-				Unit unit = data.getTimeGrid().getUnitByTime(start, end);
+				Unit unit = data.getTimeGrids().getTimeGridByCalendar(this.cal).getUnitByTime(start, end);
 
 				ArrayList<Room> rooms = new ArrayList<Room>();
 				JSONArray roomarr = curr.getJSONArray("ro");
@@ -107,7 +109,7 @@ public class SchoolClassTimeTable {
 			Unit first = this.units.get(0).getUnit();
 			Unit last = this.units.get(this.units.size() - 1).getUnit();
 
-			for (Unit u : data.getTimeGrid().getUnitList()) {
+			for (Unit u : data.getTimeGrids().getTimeGridByCalendar(this.cal).getUnitList()) {
 				if (u.after(first) && u.before(last)) {
 					if (containsUnit(u, this.units) == false) {
 						this.units.add(new TimeTableEntry<SchoolClassTimeTableUnit>(u, null));

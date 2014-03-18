@@ -1,5 +1,7 @@
 package at.rene8888.schooltoolforwebuntis.section;
 
+import java.util.Calendar;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -24,7 +26,7 @@ public class ClockSection extends Fragment {
 		View rootView = inflater.inflate(R.layout.clock_section, container, false);
 		TextView tv = (TextView) rootView.findViewById(R.id.textViewTime);
 		TextView desc = (TextView) rootView.findViewById(R.id.textViewHourOrBreak);
-		new ClockUpdateThread(Data.getData().getTimeGrid().getUnitList(), tv, desc).start();
+		new ClockUpdateThread(Data.getData().getTimeGrids().getTimeGridByCalendar(Calendar.getInstance()).getUnitList(), tv, desc).start();
 		return rootView;
 	}
 }
