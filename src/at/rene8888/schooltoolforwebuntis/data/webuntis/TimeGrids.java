@@ -9,9 +9,10 @@ import org.json.JSONObject;
 
 import android.util.Log;
 import at.rene8888.schooltoolforwebuntis.ApplicationClass;
-import at.rene8888.schooltoolforwebuntis.data.Util;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.Unit;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.type.UnitType;
+import at.rene8888.schooltoolforwebuntis.util.Time;
+import at.rene8888.schooltoolforwebuntis.util.Util;
 
 public class TimeGrids {
 
@@ -61,6 +62,15 @@ public class TimeGrids {
 			}
 		}
 
+	}
+
+	public Unit getUnitByTime(Time start, Time end) {
+		for (Unit u : this.getUnitList()) {
+			if (u.getStart().equals(start) && u.getEnd().equals(end)) {
+				return u;
+			}
+		}
+		return null;
 	}
 
 }

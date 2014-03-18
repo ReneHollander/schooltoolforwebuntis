@@ -36,8 +36,9 @@ public class Room {
 		return this.active;
 	}
 
+	@Override
 	public String toString() {
-		return "[Id=" + this.id + "; Name=" + this.name + "; LongName=" + this.longName + "; Building=" + this.building + "; Active=" + this.active + "]";
+		return "Room [id=" + id + ", name=" + name + ", longName=" + longName + ", building=" + building + ", active=" + active + "]";
 	}
 
 }

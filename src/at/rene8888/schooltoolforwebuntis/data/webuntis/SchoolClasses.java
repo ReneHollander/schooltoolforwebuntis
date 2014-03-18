@@ -39,7 +39,7 @@ public class SchoolClasses {
 		this.schoolClasses.put(r.getId(), r);
 	}
 
-	public SchoolClass getRoomById(int id) {
+	public SchoolClass getSchoolClassById(int id) {
 		if (this.schoolClasses == null) {
 			this.fillList();
 		}

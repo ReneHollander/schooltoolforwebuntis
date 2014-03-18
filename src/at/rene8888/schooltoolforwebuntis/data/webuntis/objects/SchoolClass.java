@@ -36,8 +36,9 @@ public class SchoolClass {
 		return this.active;
 	}
 
+	@Override
 	public String toString() {
-		return "[Id=" + this.id + "; Name=" + this.name + "; LongName=" + this.longName + "; Department=" + this.department + "; Active=" + this.active + "]";
+		return "SchoolClass [id=" + id + ", name=" + name + ", longName=" + longName + ", department=" + department + ", active=" + active + "]";
 	}
 
 }

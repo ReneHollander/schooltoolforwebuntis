@@ -5,8 +5,8 @@ import java.util.List;
 import android.widget.TextView;
 import at.rene8888.schooltoolforwebuntis.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
-import at.rene8888.schooltoolforwebuntis.data.Time;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.objects.Unit;
+import at.rene8888.schooltoolforwebuntis.util.Time;
 
 public class ClockUpdateThread extends Thread {
 

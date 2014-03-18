@@ -30,7 +30,9 @@ public class Subject {
 		return this.active;
 	}
 
+	@Override
 	public String toString() {
-		return "[Id=" + this.id + "; Name=" + this.name + "; LongName=" + this.longName + "; Active=" + this.active + "]";
+		return "Subject [id=" + id + ", name=" + name + ", longName=" + longName + ", active=" + active + "]";
 	}
+
 }

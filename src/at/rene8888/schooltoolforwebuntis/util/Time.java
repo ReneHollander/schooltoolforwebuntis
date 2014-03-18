@@ -1,4 +1,4 @@
-package at.rene8888.schooltoolforwebuntis.data;
+package at.rene8888.schooltoolforwebuntis.util;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -7,13 +7,13 @@ import java.io.ObjectOutput;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-public class Time implements Externalizable, Cloneable {
+public class Time implements Externalizable, Cloneable, Comparable<Time> {
 	private int sec;
 
 	public Time() {
 		this(TimeZone.getDefault(), 0);
 	}
-	
+
 	public Time(int offset) {
 		this(TimeZone.getDefault(), offset);
 	}
@@ -204,6 +204,17 @@ public class Time implements Externalizable, Cloneable {
 	@Override
 	public void writeExternal(ObjectOutput oo) throws IOException {
 		oo.writeInt(this.sec);
+	}
+
+	@Override
+	public int compareTo(Time another) {
+		if (this.equals(another)) {
+			return 0;
+		} else if (this.after(another)) {
+			return 1;
+		} else {
+			return -1;
+		}
 	}
 
 }

@@ -24,8 +24,9 @@ public class Department {
 		return this.longName;
 	}
 
+	@Override
 	public String toString() {
-		return "[Id=" + this.id + "; Name=" + this.name + "; LongName=" + this.longName + "]";
+		return "Department [id=" + id + ", name=" + name + ", longName=" + longName + "]";
 	}
 
 }

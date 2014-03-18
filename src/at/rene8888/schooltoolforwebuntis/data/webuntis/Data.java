@@ -10,11 +10,34 @@ public class Data {
 	private SchoolClasses schoolClasses;
 	private Departments departments;
 	private Subjects subjects;
+	private Teachers teachers;
 
 	// TODO ADD COLORS WHERE NEEDED
+	//
+	// try {
+	// JSONArray ja = (JSONArray)
+	// ApplicationClass.getApplication().getWebUntisRequests().getData("getTeachers",
+	// null);
+	// File sd = Environment.getExternalStorageDirectory();
+	// File file = new File(sd, "testFile.txt");
+	// FileOutputStream fos = new FileOutputStream(file);
+	// fos.write(ja.toString(4).getBytes());
+	// fos.close();
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// }
 
 	public Data() {
 		DATA = this;
+	}
+
+	public void activateAll() {
+		this.getDepartments();
+		this.getRooms();
+		this.getSchoolClasses();
+		this.getSubjects();
+		this.getTeachers();
+		this.getTimeGrid();
 	}
 
 	public TimeGrids getTimeGrid() {
@@ -57,6 +80,13 @@ public class Data {
 			this.subjects = new Subjects();
 		}
 		return this.subjects;
+	}
+
+	public Teachers getTeachers() {
+		if (this.teachers == null) {
+			this.teachers = new Teachers();
+		}
+		return this.teachers;
 	}
 
 	public static Data getData() {
