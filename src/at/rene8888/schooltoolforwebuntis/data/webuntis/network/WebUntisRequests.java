@@ -8,10 +8,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.util.Log;
-import at.rene8888.schooltoolforwebuntis.ApplicationClass;
-import at.rene8888.schooltoolforwebuntis.activity.MainActivity;
+import at.rene8888.schooltoolforwebuntis.data.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.exception.UnexceptedErrorException;
 import at.rene8888.schooltoolforwebuntis.exception.UnexpectedResultException;
+import at.rene8888.schooltoolforwebuntis.gui.activity.MainActivity;
 
 public class WebUntisRequests {
 

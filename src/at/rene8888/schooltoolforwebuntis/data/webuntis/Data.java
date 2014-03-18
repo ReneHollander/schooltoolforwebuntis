@@ -6,7 +6,13 @@ import java.io.FileOutputStream;
 import org.json.JSONArray;
 
 import android.os.Environment;
-import at.rene8888.schooltoolforwebuntis.ApplicationClass;
+import at.rene8888.schooltoolforwebuntis.data.ApplicationClass;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.department.Departments;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.room.Rooms;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.schoolclasses.SchoolClasses;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.subject.Subjects;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.teacher.Teachers;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.timegrid.TimeGrids;
 
 public class Data {
 
