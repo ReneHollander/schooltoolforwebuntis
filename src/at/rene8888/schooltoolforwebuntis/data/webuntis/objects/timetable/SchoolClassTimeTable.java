@@ -25,6 +25,9 @@ public class SchoolClassTimeTable {
 
 	private ArrayList<TimeTableEntry<SchoolClassTimeTableUnit>> units;
 
+	private TimeTableEntry<SchoolClassTimeTableUnit> firstLesson;
+	private TimeTableEntry<SchoolClassTimeTableUnit> lastLesson;
+
 	private SchoolClass schoolClass;
 	private Calendar cal;
 
@@ -106,11 +109,11 @@ public class SchoolClassTimeTable {
 
 			Collections.sort(this.units, new SchoolClassTimeTableSorter());
 
-			Unit first = this.units.get(0).getUnit();
-			Unit last = this.units.get(this.units.size() - 1).getUnit();
+			this.firstLesson = this.units.get(0);
+			this.lastLesson = this.units.get(this.units.size() - 1);
 
 			for (Unit u : data.getTimeGrids().getTimeGridByCalendar(this.cal).getUnitList()) {
-				if (u.after(first) && u.before(last)) {
+				if (u.after(this.firstLesson.getUnit()) && u.before(this.lastLesson.getUnit())) {
 					if (containsUnit(u, this.units) == false) {
 						this.units.add(new TimeTableEntry<SchoolClassTimeTableUnit>(u, null));
 					}
@@ -118,6 +121,9 @@ public class SchoolClassTimeTable {
 			}
 
 			Collections.sort(this.units, new SchoolClassTimeTableSorter());
+
+			this.firstLesson = this.units.get(0);
+			this.lastLesson = this.units.get(this.units.size() - 1);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -129,6 +135,20 @@ public class SchoolClassTimeTable {
 			this.fillList();
 		}
 		return this.units;
+	}
+
+	public TimeTableEntry<SchoolClassTimeTableUnit> getFirstLesson() {
+		if (this.firstLesson == null) {
+			this.fillList();
+		}
+		return this.firstLesson;
+	}
+
+	public TimeTableEntry<SchoolClassTimeTableUnit> getLastLesson() {
+		if (this.lastLesson == null) {
+			this.fillList();
+		}
+		return this.lastLesson;
 	}
 
 	private static boolean containsUnit(Unit other, List<TimeTableEntry<SchoolClassTimeTableUnit>> list) {
