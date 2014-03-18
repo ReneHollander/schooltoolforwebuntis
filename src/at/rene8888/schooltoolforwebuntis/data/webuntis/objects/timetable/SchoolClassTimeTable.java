@@ -55,30 +55,46 @@ public class SchoolClassTimeTable {
 
 				ArrayList<Room> rooms = new ArrayList<Room>();
 				JSONArray roomarr = curr.getJSONArray("ro");
-				for (int j = 0; j < roomarr.length(); j++) {
-					JSONObject currroom = roomarr.getJSONObject(j);
-					rooms.add(data.getRooms().getRoomById(currroom.getInt("id")));
+				if (roomarr.length() == 1) {
+					rooms.add(data.getRooms().getRoomById(roomarr.getJSONObject(0).getInt("id")));
+				} else {
+					for (int j = 0; j < roomarr.length(); j++) {
+						JSONObject currroom = roomarr.getJSONObject(j);
+						rooms.add(data.getRooms().getRoomById(currroom.getInt("id")));
+					}
 				}
 
 				ArrayList<Subject> subjects = new ArrayList<Subject>();
 				JSONArray subjectarr = curr.getJSONArray("su");
-				for (int j = 0; j < subjectarr.length(); j++) {
-					JSONObject currsubject = subjectarr.getJSONObject(j);
-					subjects.add(data.getSubjects().getSubjectById(currsubject.getInt("id")));
+				if (subjectarr.length() == 1) {
+					subjects.add(data.getSubjects().getSubjectById(subjectarr.getJSONObject(0).getInt("id")));
+				} else {
+					for (int j = 0; j < subjectarr.length(); j++) {
+						JSONObject currsubject = subjectarr.getJSONObject(j);
+						subjects.add(data.getSubjects().getSubjectById(currsubject.getInt("id")));
+					}
 				}
 
 				ArrayList<Teacher> teachers = new ArrayList<Teacher>();
 				JSONArray teacherarr = curr.getJSONArray("te");
-				for (int j = 0; j < teacherarr.length(); j++) {
-					JSONObject currteacher = teacherarr.getJSONObject(j);
-					teachers.add(data.getTeachers().getTeacherById(currteacher.getInt("id")));
+				if (teacherarr.length() == 1) {
+					teachers.add(data.getTeachers().getTeacherById(teacherarr.getJSONObject(0).getInt("id")));
+				} else {
+					for (int j = 0; j < teacherarr.length(); j++) {
+						JSONObject currteacher = teacherarr.getJSONObject(j);
+						teachers.add(data.getTeachers().getTeacherById(currteacher.getInt("id")));
+					}
 				}
 
 				ArrayList<SchoolClass> schoolclasses = new ArrayList<SchoolClass>();
 				JSONArray schoolclassarr = curr.getJSONArray("kl");
-				for (int j = 0; j < schoolclassarr.length(); j++) {
-					JSONObject currschoolclass = schoolclassarr.getJSONObject(j);
-					schoolclasses.add(data.getSchoolClasses().getSchoolClassById(currschoolclass.getInt("id")));
+				if (schoolclassarr.length() == 1) {
+					schoolclasses.add(data.getSchoolClasses().getSchoolClassById(schoolclassarr.getJSONObject(0).getInt("id")));
+				} else {
+					for (int j = 0; j < schoolclassarr.length(); j++) {
+						JSONObject currschoolclass = schoolclassarr.getJSONObject(j);
+						schoolclasses.add(data.getSchoolClasses().getSchoolClassById(currschoolclass.getInt("id")));
+					}
 				}
 
 				TimeTableEntry<SchoolClassTimeTableUnit> tte = new TimeTableEntry<SchoolClassTimeTableUnit>(unit, new SchoolClassTimeTableUnit(unit, curr.getInt("id"), rooms, subjects, teachers, schoolclasses));
