@@ -1,27 +1,24 @@
 package at.rene8888.schooltoolforwebuntis.data.thread;
 
-import java.util.List;
-
-import android.widget.TextView;
 import at.rene8888.schooltoolforwebuntis.data.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.data.util.Time;
-import at.rene8888.schooltoolforwebuntis.data.webuntis.timegrid.Unit;
-import at.rene8888.schooltoolforwebuntis.gui.activity.MainActivity;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.timetable.TimeTableEntry;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.timetable.schoolclass.SchoolClassTimeTable;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.timetable.schoolclass.SchoolClassTimeTableUnit;
+import at.rene8888.schooltoolforwebuntis.gui.section.ClockSection;
 
 public class ClockUpdateThread extends Thread {
 
-	private List<Unit> unitList;
-
 	private boolean running;
 
-	private TextView tv;
-	private TextView desc;
+	private SchoolClassTimeTable sctt;
+	private ClockSection clockSection;
 
-	public ClockUpdateThread(List<Unit> unitList, TextView tv, TextView desc) {
-		this.unitList = unitList;
+	public ClockUpdateThread(SchoolClassTimeTable sctt, ClockSection clockSection) {
 		this.running = true;
-		this.tv = tv;
-		this.desc = desc;
+		this.sctt = sctt;
+		this.sctt.getUnits();
+		this.clockSection = clockSection;
 	}
 
 	public void run() {
@@ -30,34 +27,21 @@ public class ClockUpdateThread extends Thread {
 
 		while (running) {
 
-			nextUnit: for (int i = 0; i < unitList.size(); i++) {
-				final Unit u = unitList.get(i);
+			nextUnit: for (int i = 0; i < this.sctt.getUnits().size(); i++) {
+				TimeTableEntry<SchoolClassTimeTableUnit> entry = this.sctt.getUnits().get(i);
 				if (firstCycle) {
-					if (u.getStart().before(new Time(ApplicationClass.getApplication().getDelay())) && u.getEnd().before(new Time(ApplicationClass.getApplication().getDelay()))) {
+					if (entry.getUnit().getStart().before(new Time(ApplicationClass.getApplication().getDelay())) && entry.getUnit().getEnd().before(new Time(ApplicationClass.getApplication().getDelay()))) {
 						continue nextUnit;
 					}
 				}
 
 				while (running) {
-					if (u.getEnd().equals(new Time(ApplicationClass.getApplication().getDelay()))) {
+					if (entry.getUnit().getEnd().equals(new Time(ApplicationClass.getApplication().getDelay()))) {
 						break;
 					} else {
 						try {
-							final Time t2 = (Time) u.getEnd().clone();
-							t2.substract(new Time(ApplicationClass.getApplication().getDelay()));
-							final Unit nextUnit;
-							if ((i + 1) < this.unitList.size()) {
-								nextUnit = unitList.get(i + 1);
-							} else {
-								nextUnit = u;
-							}
 
-							MainActivity.getMainActivity().runOnUiThread(new Runnable() {
-								public void run() {
-									tv.setText(t2.toString());
-									desc.setText("until the next " + nextUnit.getTag().getName());
-								}
-							});
+							this.clockSection.update(this.sctt, i, entry);
 							Thread.sleep(1000);
 						} catch (InterruptedException e) {
 							break;

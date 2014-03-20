@@ -8,6 +8,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.util.Log;
 import at.rene8888.schooltoolforwebuntis.data.ApplicationClass;
 import at.rene8888.schooltoolforwebuntis.data.util.Time;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.Data;
@@ -56,6 +57,7 @@ public class SchoolClassTimeTable {
 
 				Time start = Time.createTime(curr.getString("startTime"));
 				Time end = Time.createTime(curr.getString("endTime"));
+				Log.d("isnull", data.getTimeGrids().getTimeGridByCalendar(this.cal) + "");
 				Unit unit = data.getTimeGrids().getTimeGridByCalendar(this.cal).getUnitByTime(start, end);
 
 				ArrayList<Room> rooms = new ArrayList<Room>();
