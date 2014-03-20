@@ -47,6 +47,7 @@ public class ClockSection extends Fragment {
 			TimeTableEntry<SchoolClassTimeTableUnit> tte = sctt.getUnits().get(i);
 			if (tte.getUnit().getTag() == UnitType.LESSON) {
 				nextLesson = tte;
+				break;
 			}
 		}
 		if ((currindex + 1) < sctt.getUnits().size()) {
