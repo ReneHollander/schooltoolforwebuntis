@@ -17,7 +17,7 @@
     <PreferenceCategory
         android:summary="Delay"
         android:title="Delay" >
-        <at.rene8888.schooltoolforwebuntis.section.TimePreference
+        <at.rene8888.schooltoolforwebuntis.gui.preference.TimePreference
             android:key="delayTime"
             android:summary="Click to set the delay"
             android:title="Set Delay" />

@@ -1,4 +1,4 @@
-package at.rene8888.schooltoolforwebuntis.gui.section;
+package at.rene8888.schooltoolforwebuntis.gui.preference;
 
 import android.content.Context;
 import android.content.res.TypedArray;
