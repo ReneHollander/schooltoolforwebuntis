@@ -2,7 +2,7 @@ package at.rene8888.schooltoolforwebuntis.data.webuntis.timegrid;
 
 import at.rene8888.schooltoolforwebuntis.data.util.Time;
 
-public class Unit implements Comparable<Unit> {
+public class Unit implements Comparable<Unit>, Cloneable {
 
 	private Time start;
 	private Time end;
@@ -54,6 +54,14 @@ public class Unit implements Comparable<Unit> {
 	@Override
 	public String toString() {
 		return "Unit [start=" + start + ", end=" + end + ", tag=" + tag + "]";
+	}
+
+	public Object clone() {
+		return new Unit((Time) this.start.clone(), (Time) this.end.clone(), this.tag);
+	}
+	
+	public void setTag(UnitType tag) {
+		this.tag = tag;
 	}
 
 	@Override

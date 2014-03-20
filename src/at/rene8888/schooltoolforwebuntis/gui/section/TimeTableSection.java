@@ -43,7 +43,7 @@ public class TimeTableSection extends Fragment {
 			Unit unit = entry.getUnit();
 			SchoolClassTimeTableUnit scttu = entry.getTimeTableUnit();
 
-			if (scttu != null) {
+			if (unit.getTag() == UnitType.LESSON) {
 				out.append(unit.getStart());
 				out.append(" - ");
 				out.append(unit.getEnd());
@@ -51,43 +51,43 @@ public class TimeTableSection extends Fragment {
 
 				for (Subject s : scttu.getSubjects()) {
 					out.append(s.getName());
+					out.append(" ");
 				}
 				out.append("\n");
 
 				for (SchoolClass sc : scttu.getSchoolclasses()) {
 					out.append(sc.getName());
+					out.append(" ");
 				}
 				out.append("\n");
 
 				for (Teacher t : scttu.getTeachers()) {
 					out.append(t.getName());
+					out.append(" ");
 				}
 				out.append("\n");
 
 				for (Room r : scttu.getRooms()) {
 					out.append(r.getName());
+					out.append(" ");
 				}
 				out.append("\n");
 
 				out.append("\n");
-			} else {
-
-				if (unit.getTag() == UnitType.BREAK) {
-					out.append(unit.getStart());
-					out.append(" - ");
-					out.append(unit.getEnd());
-					out.append("\nPause\n\n");
-				} else {
-					out.append(unit.getStart());
-					out.append(" - ");
-					out.append(unit.getEnd());
-					out.append("\nFreistunde\n\n");
-				}
+			} else if (unit.getTag() == UnitType.BREAK) {
+				out.append(unit.getStart());
+				out.append(" - ");
+				out.append(unit.getEnd());
+				out.append("\nPause\n\n");
+			} else if (unit.getTag() == UnitType.FREEHOUR) {
+				out.append(unit.getStart());
+				out.append(" - ");
+				out.append(unit.getEnd());
+				out.append("\nFreistunde\n\n");
 			}
 
 		}
 		tv.setText(out.toString());
 		return rootView;
 	}
-
 }

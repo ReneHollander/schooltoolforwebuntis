@@ -240,7 +240,7 @@ public class Time implements Externalizable, Cloneable, Comparable<Time> {
 		}
 		out += year;
 
-		String month = String.valueOf(cal.get(Calendar.MONTH));
+		String month = String.valueOf(cal.get(Calendar.MONTH) + 1);
 		while (month.length() != 2) {
 			month = "0" + month;
 		}

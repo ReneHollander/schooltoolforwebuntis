@@ -2,7 +2,7 @@ package at.rene8888.schooltoolforwebuntis.data.webuntis.timegrid;
 
 public enum UnitType {
 
-	LESSON("lesson"), BREAK("break");
+	LESSON("lesson"), BREAK("break"), FREEHOUR("free hour");
 
 	private String name;
 

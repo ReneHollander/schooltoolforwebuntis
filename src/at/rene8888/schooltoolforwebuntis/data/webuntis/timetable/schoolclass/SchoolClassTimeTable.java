@@ -17,6 +17,7 @@ import at.rene8888.schooltoolforwebuntis.data.webuntis.schoolclasses.SchoolClass
 import at.rene8888.schooltoolforwebuntis.data.webuntis.subject.Subject;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.teacher.Teacher;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.timegrid.Unit;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.timegrid.UnitType;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.timetable.TimeTableEntry;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.util.SchoolClassTimeTableSorter;
 
@@ -47,6 +48,7 @@ public class SchoolClassTimeTable {
 			params.put("id", this.schoolClass.getId());
 			params.put("type", "1");
 			String date = Time.convertToYYYYMMDD(this.cal);
+			Log.d("date", date);
 			params.put("startDate", date);
 			params.put("endDate", date);
 
@@ -57,7 +59,6 @@ public class SchoolClassTimeTable {
 
 				Time start = Time.createTime(curr.getString("startTime"));
 				Time end = Time.createTime(curr.getString("endTime"));
-				Log.d("isnull", data.getTimeGrids().getTimeGridByCalendar(this.cal) + "");
 				Unit unit = data.getTimeGrids().getTimeGridByCalendar(this.cal).getUnitByTime(start, end);
 
 				ArrayList<Room> rooms = new ArrayList<Room>();
@@ -116,8 +117,12 @@ public class SchoolClassTimeTable {
 
 			for (Unit u : data.getTimeGrids().getTimeGridByCalendar(this.cal).getUnitList()) {
 				if (u.after(this.firstLesson.getUnit()) && u.before(this.lastLesson.getUnit())) {
-					if (containsUnit(u, this.units) == false) {
+					if (u.getTag() == UnitType.BREAK) {
 						this.units.add(new TimeTableEntry<SchoolClassTimeTableUnit>(u, null));
+					} else if (containsUnit(u, this.units) == false) {
+						Unit newUnit = (Unit) u.clone();
+						newUnit.setTag(UnitType.FREEHOUR);
+						this.units.add(new TimeTableEntry<SchoolClassTimeTableUnit>(newUnit, null));
 					}
 				}
 			}
