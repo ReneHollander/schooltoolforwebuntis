@@ -15,18 +15,57 @@
         android:layout_marginTop="40sp"
         android:gravity="center"
         android:text="@string/time_placeholder"
-        android:textSize="80sp" />
+        android:textSize="80dp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewTime"
+        android:paddingLeft="10sp"
+        android:text="@string/current_lesson"
+        android:textSize="32dp" />
 
     <TextView
         android:id="@+id/textViewHourOrBreak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/textView1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textViewTime"
         android:gravity="center"
         android:text="@string/until_next_lesson"
-        android:textSize="64dp" />
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/tvCurrentLesson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tvCurrentLesson"
+        android:paddingLeft="10sp"
+        android:text="@string/next_lesson"
+        android:textSize="32dp" />
+
+    <TextView
+        android:id="@+id/tvNextLesson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/TextView01"
+        android:textSize="20dp" />
 
 </RelativeLayout>
