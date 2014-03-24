@@ -137,6 +137,10 @@ public class SchoolClassTimeTable {
 		}
 	}
 
+	public Calendar getCalendar() {
+		return this.cal;
+	}
+
 	public ArrayList<TimeTableEntry<SchoolClassTimeTableUnit>> getUnits() {
 		if (this.units == null) {
 			this.fillList();

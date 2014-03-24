@@ -24,4 +24,13 @@ public class TimeGrid {
 		}
 		return null;
 	}
+	
+	public Unit getUnitByTime(Time t) {
+		for (Unit u : this.unitList) {
+			if (t.after(u.getStart()) && t.before(u.getEnd())) {
+				return u;
+			}
+		}
+		return null;
+	}
 }
