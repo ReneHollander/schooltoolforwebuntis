@@ -1,7 +1,5 @@
 package at.rene8888.schooltoolforwebuntis.gui.section;
 
-import java.util.Calendar;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -35,7 +33,7 @@ public class TimeTableSection extends Fragment {
 
 		TextView tv = (TextView) rootView.findViewById(R.id.timetable_test_label);
 
-		SchoolClassTimeTable sctt = new SchoolClassTimeTable(Data.getData().getSchoolClasses().getSchoolClassById(591), Calendar.getInstance());
+		SchoolClassTimeTable sctt = Data.getData().getCurrentTimeTable();
 
 		StringBuilder out = new StringBuilder();
 

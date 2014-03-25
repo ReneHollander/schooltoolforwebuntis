@@ -2,7 +2,7 @@ package at.rene8888.schooltoolforwebuntis.data.webuntis.timegrid;
 
 import java.util.ArrayList;
 
-import at.rene8888.schooltoolforwebuntis.data.util.Time;
+import at.rene8888.schooltoolforwebuntis.data.util.time.Time;
 
 public class TimeGrid {
 
@@ -24,7 +24,7 @@ public class TimeGrid {
 		}
 		return null;
 	}
-	
+
 	public Unit getUnitByTime(Time t) {
 		for (Unit u : this.unitList) {
 			if (t.after(u.getStart()) && t.before(u.getEnd())) {

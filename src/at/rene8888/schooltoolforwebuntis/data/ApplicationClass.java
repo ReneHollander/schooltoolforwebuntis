@@ -83,6 +83,10 @@ public class ApplicationClass extends Application {
 		return this.url;
 	}
 
+	public int getClockUpdateTime() {
+		return 1000;
+	}
+
 	public WebUntisRequests getWebUntisRequests() {
 		if (req == null) {
 			this.req = new WebUntisRequests(this);

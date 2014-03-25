@@ -13,6 +13,7 @@ import at.rene8888.schooltoolforwebuntis.data.webuntis.schoolclasses.SchoolClass
 import at.rene8888.schooltoolforwebuntis.data.webuntis.subject.Subjects;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.teacher.Teachers;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.timegrid.TimeGrids;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.timetable.schoolclass.SchoolClassTimeTable;
 
 public class Data {
 
@@ -25,6 +26,8 @@ public class Data {
 	private Departments departments;
 	private Subjects subjects;
 	private Teachers teachers;
+
+	private SchoolClassTimeTable currentTimeTable;
 
 	// TODO ADD COLORS WHERE NEEDED
 	//
@@ -114,10 +117,19 @@ public class Data {
 		return this.teachers;
 	}
 
+	public void setCurrentTimeTable(SchoolClassTimeTable currentTimeTable) {
+		this.currentTimeTable = currentTimeTable;
+	}
+
+	public SchoolClassTimeTable getCurrentTimeTable() {
+		return this.currentTimeTable;
+	}
+
 	public static Data getData() {
 		if (DATA == null) {
 			DATA = new Data();
 		}
 		return DATA;
 	}
+
 }

@@ -11,7 +11,7 @@ import org.json.JSONObject;
 import android.util.Log;
 import android.util.SparseArray;
 import at.rene8888.schooltoolforwebuntis.data.ApplicationClass;
-import at.rene8888.schooltoolforwebuntis.data.util.Time;
+import at.rene8888.schooltoolforwebuntis.data.util.time.Time;
 
 public class TimeGrids {
 
@@ -27,6 +27,9 @@ public class TimeGrids {
 
 			ArrayList<Unit> rawUnits = new ArrayList<Unit>();
 			JSONArray units = currjson.getJSONArray("timeUnits");
+
+			int day = currjson.getInt("day");
+			Log.d("day", day + "");
 
 			Unit curr = null;
 			Unit last = null;
@@ -52,9 +55,7 @@ public class TimeGrids {
 
 				last = curr;
 			}
-
-			this.timeGrids.put(currjson.getInt("day"), new TimeGrid(rawUnits));
-
+			this.timeGrids.put(day, new TimeGrid(rawUnits));
 		}
 	}
 
@@ -68,7 +69,7 @@ public class TimeGrids {
 		}
 		return this.timeGrids;
 	}
-	
+
 	public TimeGrid getTimeGridByKey(int key) {
 		return this.getTimeGrids().get(key);
 	}

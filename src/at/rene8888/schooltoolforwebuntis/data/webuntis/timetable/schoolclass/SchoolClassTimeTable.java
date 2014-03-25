@@ -10,12 +10,13 @@ import org.json.JSONObject;
 
 import android.util.Log;
 import at.rene8888.schooltoolforwebuntis.data.ApplicationClass;
-import at.rene8888.schooltoolforwebuntis.data.util.Time;
+import at.rene8888.schooltoolforwebuntis.data.util.time.Time;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.Data;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.room.Room;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.schoolclasses.SchoolClass;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.subject.Subject;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.teacher.Teacher;
+import at.rene8888.schooltoolforwebuntis.data.webuntis.timegrid.TimeGrid;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.timegrid.Unit;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.timegrid.UnitType;
 import at.rene8888.schooltoolforwebuntis.data.webuntis.timetable.TimeTableEntry;
@@ -48,7 +49,6 @@ public class SchoolClassTimeTable {
 			params.put("id", this.schoolClass.getId());
 			params.put("type", "1");
 			String date = Time.convertToYYYYMMDD(this.cal);
-			Log.d("date", date);
 			params.put("startDate", date);
 			params.put("endDate", date);
 
@@ -59,7 +59,14 @@ public class SchoolClassTimeTable {
 
 				Time start = Time.createTime(curr.getString("startTime"));
 				Time end = Time.createTime(curr.getString("endTime"));
-				Unit unit = data.getTimeGrids().getTimeGridByCalendar(this.cal).getUnitByTime(start, end);
+
+				TimeGrid tg = data.getTimeGrids().getTimeGridByCalendar(this.cal);
+				if (tg == null) {
+					Log.e("sctt error", "timegrid is null");
+					continue;
+				}
+
+				Unit unit = tg.getUnitByTime(start, end);
 
 				ArrayList<Room> rooms = new ArrayList<Room>();
 				JSONArray roomarr = curr.getJSONArray("ro");
@@ -162,9 +169,30 @@ public class SchoolClassTimeTable {
 		return this.lastLesson;
 	}
 
+	public TimeTableEntry<SchoolClassTimeTableUnit> getUnitbyUnit(Unit another) {
+		for (int i = 0; i < this.getUnits().size(); i++) {
+			TimeTableEntry<SchoolClassTimeTableUnit> entry = this.units.get(i);
+			if (entry.getUnit().equalByTime(another)) {
+				entry.setIndex(i);
+				return entry;
+			}
+		}
+		return null;
+	}
+
+	public TimeTableEntry<SchoolClassTimeTableUnit> getUnitByIndex(int index) {
+		if (index < this.getUnits().size()) {
+			TimeTableEntry<SchoolClassTimeTableUnit> entry = this.getUnits().get(index);
+			entry.setIndex(index);
+			return entry;
+		} else {
+			return null;
+		}
+	}
+
 	private static boolean containsUnit(Unit other, List<TimeTableEntry<SchoolClassTimeTableUnit>> list) {
 		for (TimeTableEntry<SchoolClassTimeTableUnit> entry : list) {
-			if (entry.getUnit().equals(other)) {
+			if (entry.getUnit().equalByTime(other)) {
 				return true;
 			}
 		}

@@ -31,10 +31,12 @@ public class MainActivity extends FragmentActivity {
 			goToWelcome();
 		} else {
 			setContentView(R.layout.main_activity);
+
 			ActionBar actionBar = getActionBar();
 			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 			actionBar.setDisplayShowHomeEnabled(false);
 			actionBar.setDisplayShowTitleEnabled(false);
+
 			this.mSectionsPagerAdapter = new SectionsPagerAdapter(this.getSupportFragmentManager());
 			mViewPager = (ViewPager) findViewById(R.id.pager);
 			mViewPager.setAdapter(mSectionsPagerAdapter);

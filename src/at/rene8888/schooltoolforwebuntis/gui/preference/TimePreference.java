@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TimePicker;
 import at.rene8888.schooltoolforwebuntis.data.ApplicationClass;
-import at.rene8888.schooltoolforwebuntis.data.util.Time;
+import at.rene8888.schooltoolforwebuntis.data.util.time.Time;
 
 public class TimePreference extends DialogPreference {
 	private int lastHour = 0;
