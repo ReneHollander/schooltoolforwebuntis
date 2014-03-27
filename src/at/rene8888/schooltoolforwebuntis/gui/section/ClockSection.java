@@ -4,7 +4,6 @@ import java.util.Calendar;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +56,7 @@ public class ClockSection extends Fragment {
 		if (nextEntry.getUnit().getTag() == UnitType.LESSON) {
 			nextLesson = currentEntry;
 		} else {
-			for (int i = currentEntry.getIndex(); i < sctt.getUnits().size(); i++) {
+			for (int i = currentEntry.getIndex() + 1; i < sctt.getUnits().size(); i++) {
 				TimeTableEntry<SchoolClassTimeTableUnit> entry = sctt.getUnits().get(i);
 				if (entry.getUnit().getTag() == UnitType.LESSON) {
 					nextLesson = entry;
@@ -74,18 +73,14 @@ public class ClockSection extends Fragment {
 		final String currlessonstring = this.stringify(currentEntry);
 		final String nextlessonstring = this.stringify(nextLesson);
 
-		try {
-			TextView tv = (TextView) MainActivity.getMainActivity().findViewById(R.id.textViewTime);
-			TextView desc = (TextView) MainActivity.getMainActivity().findViewById(R.id.textViewHourOrBreak);
-			TextView currlesson = (TextView) MainActivity.getMainActivity().findViewById(R.id.tvCurrentLesson);
-			TextView nextlesson = (TextView) MainActivity.getMainActivity().findViewById(R.id.tvNextLesson);
-			tv.setText(tvstring);
-			desc.setText(descstring);
-			currlesson.setText(currlessonstring);
-			nextlesson.setText(nextlessonstring);
-		} catch (Exception e) {
-			Log.d("clock", "error while trying to set clock", e);
-		}
+		TextView tv = (TextView) MainActivity.getMainActivity().findViewById(R.id.textViewTime);
+		TextView desc = (TextView) MainActivity.getMainActivity().findViewById(R.id.textViewHourOrBreak);
+		TextView currlesson = (TextView) MainActivity.getMainActivity().findViewById(R.id.tvCurrentLesson);
+		TextView nextlesson = (TextView) MainActivity.getMainActivity().findViewById(R.id.tvNextLesson);
+		tv.setText(tvstring);
+		desc.setText(descstring);
+		currlesson.setText(currlessonstring);
+		nextlesson.setText(nextlessonstring);
 	}
 
 	public String stringify(TimeTableEntry<SchoolClassTimeTableUnit> tte) {

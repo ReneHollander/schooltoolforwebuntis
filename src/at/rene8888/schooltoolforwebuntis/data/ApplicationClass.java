@@ -104,6 +104,6 @@ public class ApplicationClass extends Application {
 
 	public void setURL(URL url) {
 		this.url = url;
-		
+
 	}
 }

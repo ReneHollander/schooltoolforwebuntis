@@ -40,7 +40,7 @@ public class WelcomeActivity extends Activity implements View.OnClickListener {
 			Log.e("WelcomeActivity", "Invalid URL", e);
 			Toast.makeText(this, "Invalid URL", Toast.LENGTH_SHORT).show();
 		}
-		
+
 	}
 
 	public void goToMain() {
