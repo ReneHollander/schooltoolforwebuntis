@@ -12,16 +12,8 @@
         android:layout_alignLeft="@+id/editText1"
         android:layout_below="@+id/editText1"
         android:ems="10"
-        android:inputType="textPassword" >
+        android:inputType="textPersonName" >
     </EditText>
-
-    <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editText2"
-        android:text="@string/save" />
 
     <EditText
         android:id="@+id/editText1"
@@ -31,27 +23,58 @@
         android:layout_marginLeft="20sp"
         android:layout_toRightOf="@+id/tvusernameWelcome"
         android:ems="10"
-        android:inputType="textPersonName" >
+        android:inputType="textUri" >
     </EditText>
 
+     
     <TextView
-        android:id="@+id/tvusernameWelcome"
+        android:id="@+id/tvURLWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/editText1"
         android:layout_alignBottom="@+id/editText1"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="5sp"
-        android:text="@string/username" />
+        android:text="@string/url" />
 
     <TextView
-        android:id="@+id/tvpasswordWelcome"
+        android:id="@+id/tvusernameWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/editText2"
         android:layout_alignBottom="@+id/editText2"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="5sp"
+        android:text="@string/username" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText2"
+        android:ems="10" 
+        android:inputType="textPassword">
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/tvpasswordWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editText3"
+        android:layout_alignBottom="@+id/editText3"
+        android:layout_alignLeft="@+id/tvpasswordWelcome"
+        android:layout_toLeftOf="@+id/editText1"
         android:text="@string/password" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText3"
+        android:text="@string/save" />
 
 </RelativeLayout>

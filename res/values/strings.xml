@@ -26,5 +26,6 @@
     <string name="settings">Settings</string>
     <string name="current_lesson">Current lesson:</string>
     <string name="next_lesson">Next lesson:</string>
+    <string name="url">URL:</string>
 
 </resources>

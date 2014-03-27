@@ -31,20 +31,21 @@ public class ApplicationClass extends Application {
 		this.prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		this.editor = prefs.edit();
 		this.update();
-		try {
-			this.url = new URL("https://stpl.tgm.ac.at/WebUntis/jsonrpc.do?school=tgm");
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void update() {
 		this.username = prefs.getString("username", null);
 		this.password = prefs.getString("password", null);
 		this.delay = prefs.getInt("delay", 0);
+		try {
+			this.url = new URL(prefs.getString("url", null));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void saveChanges() {
+		editor.putString("url", this.getURL().toString());
 		editor.putString("username", this.getUsername());
 		editor.putString("password", this.getPassword());
 		editor.putInt("delay", this.getDelay());
@@ -99,5 +100,10 @@ public class ApplicationClass extends Application {
 
 	public static ApplicationClass getApplication() {
 		return app;
+	}
+
+	public void setURL(URL url) {
+		this.url = url;
+		
 	}
 }

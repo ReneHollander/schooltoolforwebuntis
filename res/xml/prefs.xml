@@ -2,8 +2,12 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <PreferenceCategory
-        android:summary="Username and password information"
+        android:summary="WebUntis information"
         android:title="Login information" >
+         <EditTextPreference
+            android:key="url"
+            android:summary="Please enter your WebUntis URL"
+            android:title="URL" />
         <EditTextPreference
             android:key="username"
             android:summary="Please enter your login username"
