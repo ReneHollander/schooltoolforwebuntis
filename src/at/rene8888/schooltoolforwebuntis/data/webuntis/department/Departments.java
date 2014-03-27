@@ -16,16 +16,21 @@ public class Departments {
 	private void fillList() {
 		try {
 			this.departments = new SparseArray<Department>();
-			JSONArray ja = (JSONArray) ApplicationClass.getApplication().getWebUntisRequests().getData("getDepartments", null);
+			JSONArray ja = (JSONArray) ApplicationClass.getApplication()
+					.getWebUntisRequests().getData("getDepartments", null);
+			long start = System.currentTimeMillis();
 			for (int i = 0; i < ja.length(); i++) {
 				JSONObject curr = ja.getJSONObject(i);
-				Department d = new Department(curr.getInt("id"), curr.getString("name"), curr.getString("longName"));
+				Department d = new Department(curr.getInt("id"),
+						curr.getString("name"), curr.getString("longName"));
 				this.addDepartment(d);
 			}
+			long stop = System.currentTimeMillis();
+			long diff = stop - start;
+			Log.d("bench", diff + "ms");
 		} catch (Exception e) {
 			Log.e("request", "error while getting departments", e);
 		}
-
 	}
 
 	public void addDepartment(Department d) {
